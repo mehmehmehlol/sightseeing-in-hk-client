@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div>Navbar Component!</div>
+        <div>
+            <Link to='/explore'>Explore</Link>
+        </div>
     )
 }
 
