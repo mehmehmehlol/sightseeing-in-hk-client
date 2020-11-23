@@ -10,6 +10,9 @@ import Signup from './Auth/Signup'
 // import SimpleMap from './SimpleMap';
 import Navbar from './container/Navbar';
 import ExploreComponent from './Explore/ExploreComponent';
+// import MapContainer from './GoogleApi/MapContainer';
+
+
 
 
 class App extends React.Component {
@@ -45,7 +48,6 @@ class App extends React.Component {
   }
 
   handleLogout = (data) => {
-    // debugger
     this.setState ({
       isLoggedIn: false,
       user: {}
@@ -60,6 +62,7 @@ class App extends React.Component {
         <div className="App">
           <Router>
                 <Navbar />
+              {/* <MapContainer /> */}
                 <Route 
                   exact path="/" 
                   render={props => (

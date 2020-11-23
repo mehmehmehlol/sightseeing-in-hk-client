@@ -1,12 +1,12 @@
 import React from 'react';
 import ExploreCard from './ExploreCard';
 
-const ExploreDisplay = ({places}) => {
+const ExploreDisplay = ({places, handleClick}) => {
     return(
         <div>
             {places.map(place => {
                 return(
-                    <ExploreCard key={place.name} place={place} />
+                    <ExploreCard key={place.id} place={place} handleClick={handleClick}/>
                 )
             })}
         </div>

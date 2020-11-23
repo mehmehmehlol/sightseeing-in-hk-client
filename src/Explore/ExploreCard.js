@@ -1,20 +1,23 @@
 import React from 'react';
+// import { ExternalLink } from 'react-external-link';
+// import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-const ExploreCard = ({place}) => {
-    const {name, category, description, address, phone_number, website } = place
+
+const ExploreCard = ({place, handleClick}) => {
+    const {name, image} = place
+    
+        
     return(
-        <div>
+        <div 
+            className="ui card" 
+            key={place.id} 
+            onClick={() => handleClick(place)}
+        >
             <h2>{name}</h2>
-            <p>What's so exiting about this place! <br/>
-                {description}
-            </p>
-            <div>
-                More Information:
-                Website: <a src={website}></a>
-                Address: {address}
-                Phone Number: {phone_number}
-                
-            </div>
+            <img src={image} 
+            style={{width: 500, height: "auto"}}
+            alt={name} />
+            
         </div>
     )
 };

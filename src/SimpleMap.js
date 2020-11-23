@@ -9,6 +9,8 @@ class SimpleMap extends React.Component {
         },
         zoom: 11
       };
+
+      API_KEY = process.env.REACT_APP_GOOGLE_API_KEY
      
       render() {
         return (

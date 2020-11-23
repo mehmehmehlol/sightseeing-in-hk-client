@@ -1,10 +1,12 @@
 import React from 'react';
 import ExploreDisplay from './ExploreDisplay';
+import ExploreDetails from './ExploreDetails';
 
 class ExploreComponent extends React.Component {
 
     state = {
-        places: []
+        places: [],
+        chosenPlace: null
     }
 
     componentDidMount() {
@@ -13,12 +15,30 @@ class ExploreComponent extends React.Component {
         .then(places => this.setState({places}))
     }
 
+    selectPlace = id => {
+        this.setState({
+            chosenPlace: this.state.places.find(place => place.id === id)
+        })
+    }
+
+    displayPlaceInfo = (place) => {
+        this.setState({chosenPlace: this.state.places.find(p => p === place)})
+    }
+
+    backToMain = () => {
+        this.setState({chosenPlace: null})
+    }
+
+
     render() {
         const { places } = this.state 
         return(
             <div>
                 <h1>Places To Explore</h1>
-                <ExploreDisplay places={places}/>
+                {!this.state.chosenPlace ?
+                <ExploreDisplay places={places} handleClick={this.displayPlaceInfo} /> :
+                <ExploreDetails chosenPlace={this.state.chosenPlace} backToMain={this.backToMain} /> 
+                }
             </div>
         )
     }
