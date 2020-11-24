@@ -7,13 +7,16 @@ class ExploreComponent extends React.Component {
     state = {
         places: [],
         chosenPlace: null
+
     }
 
     componentDidMount() {
         fetch('http://localhost:3001/places')
         .then(res => res.json())
         .then(places => this.setState({places}))
+
     }
+
 
     selectPlace = id => {
         this.setState({
@@ -29,6 +32,7 @@ class ExploreComponent extends React.Component {
         this.setState({chosenPlace: null})
     }
 
+    // Favorites
 
     render() {
         const { places } = this.state 

@@ -1,18 +1,17 @@
 import React from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
     
     state = {
         username: '',
-        password: '',
-        errors: ''
+        password: ''
     };
 
-    UNSAFE_componentWillMount() {
-        return this.props.loggedInStatus ? this.redirect() : null
-    }
+    // UNSAFE_componentWillMount() {
+    //     return this.props.loggedInStatus ? this.redirect() : null
+    // }
     
     handleChange = (e) => {
         // debugger
@@ -23,31 +22,13 @@ class Login extends React.Component {
     
     handleSubmit = e => {
         e.preventDefault()
-
-        const {username, password} = this.state
-
-        let user = {
-            username: username,
-            password: password
-        }
-    
-        axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
-        .then(res => {
-            if (res.data.logged_in) {
-                this.props.handleLogin(res.data)
-                this.redirect()
-            } else {
-                this.setState({
-                    errors: res.data.errors
-                })
-            }
-        })
-        .catch(error => console.log('api errors:', error))
-    };
-
-    redirect = () => {
-        this.props.history.push('/')
+        this.props.handleSubmit(this.state)
     }
+        
+
+    // redirect = () => {
+    //     this.props.history.push('/')
+    // }
 
     handleErrors = () => {
         return (

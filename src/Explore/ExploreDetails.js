@@ -4,7 +4,7 @@ import MapContainer from '../GoogleApi/MapContainer'
 
 const ExploreDetails = ({chosenPlace, backToMain}) => {
     const {name, image, description, website, address, phone_number, latitude, longitude} = chosenPlace
-        
+
     return(
         <div>
             <h2>{name}</h2>
@@ -23,6 +23,10 @@ const ExploreDetails = ({chosenPlace, backToMain}) => {
                 <br />
                 Address: {address}<br/>
                 Phone Number: <a href="tel:{phone_number}">{phone_number}</a>
+                <div>
+                   Tags: {chosenPlace.tags.map(tag => tag.name + " ")}
+               </div>
+               <br />
                 <button 
                 className="detail-btn"
                 onClick={() => {backToMain()}}
@@ -30,9 +34,7 @@ const ExploreDetails = ({chosenPlace, backToMain}) => {
                    Back to Explore Page
                </button>
 
-               <div>
-                   {chosenPlace.place_tags.map(tag => console.log(tag))}
-               </div>
+               
                 <MapContainer latitude={latitude} longitude={longitude} name={name}/>
                <br /><br />
                

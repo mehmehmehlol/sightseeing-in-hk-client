@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 class Signup extends React.Component {
@@ -9,7 +8,6 @@ class Signup extends React.Component {
         last_name: '',
         username: '',
         password: '',
-        password_confirmation: '',
         errors: ''
     };
     
@@ -21,49 +19,16 @@ class Signup extends React.Component {
     
     handleSubmit = e => {
         e.preventDefault()
-
-        const {first_name, last_name, username, password, password_confirmation } = this.state
+        this.props.handleSubmit(this.state)      
+    }
         
-        let user = {
-            first_name: first_name,
-            last_name: last_name,
-            username: username,
-            password: password,
-            password_confirmation: password_confirmation
-        }
-        
-        axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
-        .then(res => {
-            if (res.data.status === 'created') {
-                this.props.handleLogin(res.data)
-                this.redirect()
-            } else {
-                this.setState({
-                    errors: res.data.errors
-                })
-            }
-        })
-        .catch(error => console.log('api errors:', error))
-    };
-
+       
     redirect = () => {
         this.props.history.push('/')
     }
 
-    handleError = () => {
-        return (
-            <div>
-                <ul>
-                    {this.state.errors.map((error) => {
-                        return <li key={error}>{error}</li>
-                    })}
-                </ul>
-            </div>
-        )
-    }
-
     render() {
-        const {first_name, last_name, username, password, password_confirmation} = this.state
+        const {first_name, last_name, username, password} = this.state
         return (
             <div>
                 <h1>Sign Up</h1>
@@ -113,22 +78,12 @@ class Signup extends React.Component {
                             placeholder="Password" 
                         />
                     </div>
-                    <div className="field">
-                        <label>Password Confirmation </label>
-                        <input 
-                            name='password_confirmation'
-                            value={password_confirmation} 
-                            onChange={this.handleChange} 
-                            type="password" 
-                            placeholder="Password Confirmation" 
-                        />
-                    </div>
                     <button className="ui button" type="submit">Sign Up</button>
                 </form>
 
-                <div>
+                {/* <div>
                     {this.state.errors ? this.handleErrors() : null}
-                </div>
+                </div> */}
                 
             </div>
         )
