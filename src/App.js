@@ -80,7 +80,7 @@ class App extends React.Component {
      .then(res => res.json())
      .then(data => {
        console.log(data.user)
-       debugger
+       // debugger
        localStorage.setItem('token', data.token)
        this.setState({
           user: {
