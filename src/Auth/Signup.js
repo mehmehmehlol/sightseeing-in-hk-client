@@ -8,7 +8,6 @@ class Signup extends React.Component {
         last_name: '',
         username: '',
         password: '',
-        errors: ''
     };
     
     handleChange = (e) => {
@@ -80,10 +79,6 @@ class Signup extends React.Component {
                     </div>
                     <button className="ui button" type="submit">Sign Up</button>
                 </form>
-
-                {/* <div>
-                    {this.state.errors ? this.handleErrors() : null}
-                </div> */}
                 
             </div>
         )

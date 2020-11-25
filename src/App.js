@@ -3,13 +3,12 @@ import React from 'react';
 import './App.css';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
-import Home from './container/Home'
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
-// import Logout from './Auth/Logout'
 
-
+import Home from './container/Home'
 import Navbar from './container/Navbar';
+
 import ExploreDetails from './Explore/ExploreDetails';
 import ExploreComponent from './Explore/ExploreComponent'
 import FavoriteComponent from './Favorites/FavoriteComponent';
@@ -36,7 +35,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(user => {
-        console.log(user)
+        // console.log(user)
         this.setState({user})
       })
     }
@@ -92,8 +91,8 @@ class App extends React.Component {
   }
 
     handleSignupFetch = (info, request) => {
-      //  console.log(info)
-      //  console.log(request)
+       console.log(info)
+       console.log(request)
        fetch(request, {
          method: 'POST',
          headers: {
@@ -109,8 +108,8 @@ class App extends React.Component {
        })
        .then(res => res.json())
        .then(data => {
-         console.log(data.user)
-        //  debugger
+         console.log(data)
+         debugger
          localStorage.setItem('token', data.token)
          this.setState({
             user: data.user,
