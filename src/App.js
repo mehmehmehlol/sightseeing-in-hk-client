@@ -21,7 +21,7 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: {places: [], username: '', first_name: ''},
+    user: {id: '', places: [], first_name: ''},
     token: '',
     favorites: []
   }
@@ -84,10 +84,10 @@ class App extends React.Component {
        localStorage.setItem('token', data.token)
        this.setState({
           user: {
+            id: data.user.data.id,
             places: data.user.data.attributes.places,
-            username: data.user.data.attributes.username,
             first_name: data.user.data.attributes.first_name
-          },
+          }
         }, () => {
         this.props.history.push('/') 
         })
@@ -105,24 +105,25 @@ class App extends React.Component {
           //  "Authorization": "application/json"
          },
          body: JSON.stringify({
-           user: { 
+           
             first_name: info.first_name,
             last_name: info.last_name,
             username: info.username,
             password: info.password
-         }})
+         })
        })
        .then(res => res.json())
        .then(data => {
-         console.log(data)
-         // debugger
+        //  console.log(data)
+        //  debugger
          localStorage.setItem('token', data.token)
          this.setState({
            user: {
-            places: data.user.data.relationships.places,
-            username: data.user.data.attributes.username,
-            first_name: data.user.data.attributes.first_name
-        }}, () => {
+             id: data.user.data.id,
+             places: data.user.data.attributes.places,
+             first_name: data.user.data.attributes.first_name
+           }
+          }, () => {
             // console.log(this.props.history)
           this.props.history.push('/') 
          }
@@ -145,7 +146,7 @@ class App extends React.Component {
   
 
   addFavorite = (place) => {
-    const newFavorite = { favorites: {place_id: place.id, user_id: this.state.userId}}
+    const newFavorite = { favorites: {place_id: place.id, user_id: this.state.user.id}}
     fetch(`http://localhost:3001/favorites`, {
       method: 'POST',
       headers: {
@@ -180,7 +181,7 @@ class App extends React.Component {
   render() {
 
     const { user } = this.state
-    console.log(user)
+    // console.log(user)
       return (
         <div className="App">
   

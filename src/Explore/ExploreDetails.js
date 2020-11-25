@@ -25,7 +25,8 @@ const ExploreDetails = ({selected, backToMain}) => {
                 Phone Number: <a href="tel:{phone_number}">{phone_number}</a>
                 <div>
                     
-                   Tags: {selected.tags.map(tag => tag.name + " ")}
+                   {/* Tags: {selected.tags.map(tag => tag.name + " ")} */}
+                   Tags: {selected.tags.map(tag => console.log(tag))}
                </div>
                <br />
                 <button 
