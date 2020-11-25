@@ -18,11 +18,11 @@ class ExploreComponent extends React.Component {
     }
 
 
-    selectPlace = id => {
-        this.setState({
-            chosenPlace: this.state.places.find(place => place.id === id)
-        })
-    }
+    // selectPlace = id => {
+    //     this.setState({
+    //         chosenPlace: this.state.places.find(place => place.id === id)
+    //     })
+    // }
 
     displayPlaceInfo = (place) => {
         this.setState({chosenPlace: this.state.places.find(p => p === place)})
@@ -41,7 +41,7 @@ class ExploreComponent extends React.Component {
                 <h1>Places To Explore</h1>
                 {!this.state.chosenPlace ?
                 <ExploreDisplay places={places} handleClick={this.displayPlaceInfo} /> :
-                <ExploreDetails chosenPlace={this.state.chosenPlace} backToMain={this.backToMain} /> 
+                <ExploreDetails selected={this.state.chosenPlace} backToMain={this.backToMain} /> 
                 }
             </div>
         )

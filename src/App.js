@@ -9,9 +9,10 @@ import Signup from './Auth/Signup'
 import Home from './container/Home'
 import Navbar from './container/Navbar';
 
-import ExploreDetails from './Explore/ExploreDetails';
+// import ExploreDetails from './Explore/ExploreDetails';
 import ExploreComponent from './Explore/ExploreComponent'
 import FavoriteComponent from './Favorites/FavoriteComponent';
+import Profile from './User/Profile';
 // import MapContainer from './GoogleApi/MapContainer';
 
 
@@ -20,7 +21,7 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: {},
+    user: {places: [], username: '', first_name: ''},
     token: '',
     favorites: []
   }
@@ -35,8 +36,8 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(user => {
-        // console.log(user)
-        this.setState({user})
+        console.log(user.user)
+        this.setState({user: user.user})
       })
     }
   }
@@ -51,20 +52,20 @@ class App extends React.Component {
   
  
    handleLogin = (info) => {
-     console.log(info)
-     console.log('login')
+    //  console.log(info)
+    //  console.log('login')
      this.handleSigninFetch(info, 'http://localhost:3001/login')
    }
 
    handleSignup = (info) => {
-     console.log('sign up')
+    //  console.log('sign up')
      this.handleSignupFetch(info, 'http://localhost:3001/users' )
    }
 
 
    handleSigninFetch = (info, request) => {
-     console.log(info)
-     console.log(request)
+    //  console.log(info)
+    //  console.log(request)
      fetch(request, {
        method: 'POST',
        headers: {
@@ -79,12 +80,16 @@ class App extends React.Component {
      .then(res => res.json())
      .then(data => {
        console.log(data.user)
-      //  debugger
+       debugger
        localStorage.setItem('token', data.token)
        this.setState({
-          user: data.user,
+          user: {
+            places: data.user.data.attributes.places,
+            username: data.user.data.attributes.username,
+            first_name: data.user.data.attributes.first_name
+          },
         }, () => {
-        this.props.history.push('/home') 
+        this.props.history.push('/') 
         })
     })
     .catch(errors => console.log(errors))
@@ -100,22 +105,26 @@ class App extends React.Component {
           //  "Authorization": "application/json"
          },
          body: JSON.stringify({
-           first_name: info.first_name,
-           last_name: info.last_name,
-           username: info.username,
-           password: info.password
-         })
+           user: { 
+            first_name: info.first_name,
+            last_name: info.last_name,
+            username: info.username,
+            password: info.password
+         }})
        })
        .then(res => res.json())
        .then(data => {
          console.log(data)
-         debugger
+         // debugger
          localStorage.setItem('token', data.token)
          this.setState({
-            user: data.user,
-          }, () => {
-            console.log(this.props.history)
-          this.props.history.push('/home') 
+           user: {
+            places: data.user.data.relationships.places,
+            username: data.user.data.attributes.username,
+            first_name: data.user.data.attributes.first_name
+        }}, () => {
+            // console.log(this.props.history)
+          this.props.history.push('/') 
          }
         )
       
@@ -127,20 +136,12 @@ class App extends React.Component {
    handleLogout = (user) => {
     localStorage.removeItem('token')
     this.setState({user: user })
-    return <Redirect to="/home" push={true} />
+    return <Redirect to="/" push={true} />
   }
 
 
 
   // Favorites
-  displayFavorites = () => {
-    fetch('http://localhost:3001/favorites')
-    .then(res => res.json())
-    .then(favorites => {
-      console.log(favorites)
-      this.setState({favorites})
-    })
-  }
   
 
   addFavorite = (place) => {
@@ -177,18 +178,18 @@ class App extends React.Component {
   }
 
   render() {
-  
+
+    const { user } = this.state
+    console.log(user)
       return (
         <div className="App">
   
-              <Navbar user={this.state.user}/>
+              <Navbar user={user}/>
               <Switch>
-                  <Route exact path = '/home' render={() => <Home user={this.state.user} />} />
+                  <Route exact path = '/' render={() => <Home user={user} />} />
                   <Route exact path = '/login' component = {this.renderForm} />
                   <Route exact path = "/signup" component = {this.renderForm} />
                   <Route exact path = '/logout' component={() => this.handleLogout()} />
-
-
 
                   <Route 
                     exact path="/explore" 
@@ -196,14 +197,16 @@ class App extends React.Component {
                       <ExploreComponent {...props} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
                     )}
                   />
-                  <Route 
-                  exact path='/explore/:id' component={ExploreDetails} 
-                  />
+
+
                   <Route
                     exact path="/favorites" 
-                    component={() => 
-                      <FavoriteComponent favorites={this.displayFavorites} removeFavorite={this.removeFavorite} />
-                    }
+                    render={() => <FavoriteComponent places={user.places}/>}
+                  />
+
+                  <Route
+                    exact path="/profile"
+                    render={() => <Profile />} 
                   />
             </Switch>
 

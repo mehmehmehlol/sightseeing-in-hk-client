@@ -2,9 +2,9 @@ import React from 'react';
 import { ExternalLink } from 'react-external-link';
 import MapContainer from '../GoogleApi/MapContainer'
 
-const ExploreDetails = ({chosenPlace, backToMain}) => {
-    const {name, image, description, website, address, phone_number, latitude, longitude} = chosenPlace
-
+const ExploreDetails = ({selected, backToMain}) => {
+    const {name, image, description, website, address, phone_number, latitude, longitude} = selected
+    console.log(selected)
     return(
         <div>
             <h2>{name}</h2>
@@ -24,7 +24,8 @@ const ExploreDetails = ({chosenPlace, backToMain}) => {
                 Address: {address}<br/>
                 Phone Number: <a href="tel:{phone_number}">{phone_number}</a>
                 <div>
-                   Tags: {chosenPlace.tags.map(tag => tag.name + " ")}
+                    
+                   Tags: {selected.tags.map(tag => tag.name + " ")}
                </div>
                <br />
                 <button 

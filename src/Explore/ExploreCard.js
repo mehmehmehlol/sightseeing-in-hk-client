@@ -18,7 +18,6 @@ const ExploreCard = ({place, handleClick}) => {
             style={{width: 500, height: "auto"}}
             alt={name} />
             
-            <h2>{place.name}</h2>
         </div>
     )
 };
