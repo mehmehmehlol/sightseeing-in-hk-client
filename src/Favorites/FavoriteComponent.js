@@ -3,7 +3,7 @@ import ExploreCard from '../Explore/ExploreCard'
 import ExploreDetails from '../Explore/ExploreDetails'
 
 class FavoriteComponent extends React.Component {
-  // console.log(places)
+
     state = {
         chosenFavorite: null
     }

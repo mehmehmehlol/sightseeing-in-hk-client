@@ -23,6 +23,7 @@ class App extends React.Component {
   state = {
     user: {id: '', places: [], first_name: ''},
     token: '',
+    places: [],
     favorites: []
   }
 
@@ -36,11 +37,24 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(user => {
-        console.log(user.user)
+        // console.log(user.user)
         this.setState({user: user.user})
       })
     }
+
+    //fetch places
+    fetch('http://localhost:3001/places')
+        .then(res => res.json())
+        // debugger
+        .then(data => { 
+          console.log(data)
+          debugger
+          // this.setState({
+          //   places: data.data.map(place => place.attributes)})
+          })
   }
+
+
 
   renderForm = (routerProps) => {
     if (routerProps.location.pathname === "/login"){
@@ -79,7 +93,7 @@ class App extends React.Component {
      })
      .then(res => res.json())
      .then(data => {
-       console.log(data.user)
+       console.log(data)
        debugger
        localStorage.setItem('token', data.token)
        this.setState({
@@ -96,8 +110,8 @@ class App extends React.Component {
   }
 
     handleSignupFetch = (info, request) => {
-       console.log(info)
-       console.log(request)
+      //  console.log(info)
+      //  console.log(request)
        fetch(request, {
          method: 'POST',
          headers: {
@@ -194,8 +208,8 @@ class App extends React.Component {
 
                   <Route 
                     exact path="/explore" 
-                    render={props => (
-                      <ExploreComponent {...props} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
+                    render={() => (
+                      <ExploreComponent explore={this.state.places} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
                     )}
                   />
 

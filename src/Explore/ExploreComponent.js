@@ -5,7 +5,7 @@ import ExploreDetails from './ExploreDetails';
 class ExploreComponent extends React.Component {
 
     state = {
-        places: [],
+        places: this.props.explore,
         chosenPlace: null
 
     }
@@ -13,8 +13,10 @@ class ExploreComponent extends React.Component {
     componentDidMount() {
         fetch('http://localhost:3001/places')
         .then(res => res.json())
-        .then(places => this.setState({places}))
-
+        // debugger
+        .then(data => { this.setState({
+            places: data.data.map(place => place.attributes)})}
+        )
     }
 
 
@@ -36,6 +38,8 @@ class ExploreComponent extends React.Component {
 
     render() {
         const { places } = this.state 
+        console.log(places)
+        // debugger
         return(
             <div>
                 <h1>Places To Explore</h1>

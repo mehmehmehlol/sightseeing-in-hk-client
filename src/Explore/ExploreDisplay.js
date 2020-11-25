@@ -6,7 +6,7 @@ const ExploreDisplay = ({places, handleClick}) => {
         <div>
             {places.map(place => {
                 return(
-                    <ExploreCard key={place.id} place={place} handleClick={handleClick}/>
+                    <ExploreCard key={place.name} place={place} handleClick={handleClick}/>
                 )
             })}
         </div>

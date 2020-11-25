@@ -5,6 +5,7 @@ import MapContainer from '../GoogleApi/MapContainer'
 const ExploreDetails = ({selected, backToMain}) => {
     const {name, image, description, website, address, phone_number, latitude, longitude} = selected
     console.log(selected)
+    debugger
     return(
         <div>
             <h2>{name}</h2>
