@@ -22,7 +22,7 @@ class FavoriteComponent extends React.Component {
                 <h1>Favorites</h1>
                 
                 {!this.state.chosenFavorite ?
-                   this.props.places.map(place => <ExploreCard key={place.name} handleClick={this.displayFavInfo} place={place} />) 
+                   this.props.user.places.map(place => <ExploreCard key={place.name} handleClick={this.displayFavInfo} place={place} />) 
                    :
                    <ExploreDetails selected={this.state.chosenFavorite} backToMain={this.closeFav} />
                 }

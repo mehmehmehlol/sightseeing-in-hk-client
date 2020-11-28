@@ -21,7 +21,7 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: {id: '', places: [], first_name: ''},
+    user: {},
     token: '',
     places: [],
     favorites: []
@@ -36,9 +36,10 @@ class App extends React.Component {
         }
       })
       .then(res => res.json())
-      .then(user => {
-        // console.log(user.user)
-        this.setState({user: user.user})
+      .then(data => {
+        console.log(data)
+        debugger
+        this.setState({user: data.user})
       })
     }
 
@@ -48,10 +49,8 @@ class App extends React.Component {
         // debugger
         .then(data => { 
           console.log(data)
-          debugger
-          // this.setState({
-          //   places: data.data.map(place => place.attributes)})
-          })
+          this.setState({places: data})
+        })
   }
 
 
@@ -97,11 +96,12 @@ class App extends React.Component {
        debugger
        localStorage.setItem('token', data.token)
        this.setState({
-          user: {
-            id: data.user.data.id,
-            places: data.user.data.attributes.places,
-            first_name: data.user.data.attributes.first_name
-          }
+          user: 
+            // id: data.user.data.id,
+            // places: data.user.data.attributes.places,
+            // first_name: data.user.data.attributes.first_name
+            data.user
+          
         }, () => {
         this.props.history.push('/') 
         })
@@ -134,7 +134,7 @@ class App extends React.Component {
          this.setState({
            user: {
              id: data.user.data.id,
-             places: data.user.data.attributes.places,
+             places: data.user.attributes.places,
              first_name: data.user.data.attributes.first_name
            }
           }, () => {
@@ -216,7 +216,7 @@ class App extends React.Component {
 
                   <Route
                     exact path="/favorites" 
-                    render={() => <FavoriteComponent places={user.places}/>}
+                    render={() => <FavoriteComponent user={user}/>}
                   />
 
                   <Route
