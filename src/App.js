@@ -21,8 +21,9 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: {id: '', places: [], first_name: ''},
+    user: {},
     token: '',
+    places: [],
     favorites: []
   }
 
@@ -35,12 +36,25 @@ class App extends React.Component {
         }
       })
       .then(res => res.json())
-      .then(user => {
-        console.log(user.user)
-        this.setState({user: user.user})
+      .then(data => {
+        console.log(data)
+        // debugger
+        this.setState({user: data.user.data.attributes})
       })
     }
+
+    //fetch places
+    fetch('http://localhost:3001/places')
+        .then(res => res.json())
+        .then(data => { 
+          console.log(data)
+          // debugger
+          this.setState({places: data})
+        })
   }
+
+
+  // auth
 
   renderForm = (routerProps) => {
     if (routerProps.location.pathname === "/login"){
@@ -79,15 +93,16 @@ class App extends React.Component {
      })
      .then(res => res.json())
      .then(data => {
-       console.log(data.user)
-       // debugger
+       console.log(data)
+      //  debugger
        localStorage.setItem('token', data.token)
        this.setState({
-          user: {
-            id: data.user.data.id,
-            places: data.user.data.attributes.places,
-            first_name: data.user.data.attributes.first_name
-          }
+          user: 
+            // id: data.user.data.id,
+            // places: data.user.data.attributes.places,
+            // first_name: data.user.data.attributes.first_name
+            data.user.data.attributes
+          
         }, () => {
         this.props.history.push('/') 
         })
@@ -96,8 +111,8 @@ class App extends React.Component {
   }
 
     handleSignupFetch = (info, request) => {
-       console.log(info)
-       console.log(request)
+      //  console.log(info)
+      //  console.log(request)
        fetch(request, {
          method: 'POST',
          headers: {
@@ -118,11 +133,7 @@ class App extends React.Component {
         //  debugger
          localStorage.setItem('token', data.token)
          this.setState({
-           user: {
-             id: data.user.data.id,
-             places: data.user.data.attributes.places,
-             first_name: data.user.data.attributes.first_name
-           }
+           user: data.user.data.attributes
           }, () => {
             // console.log(this.props.history)
           this.props.history.push('/') 
@@ -140,6 +151,10 @@ class App extends React.Component {
     return <Redirect to="/" push={true} />
   }
 
+  
+
+  
+  
 
 
   // Favorites
@@ -180,8 +195,8 @@ class App extends React.Component {
 
   render() {
 
-    const { user } = this.state
-    // console.log(user)
+    const { user, places } = this.state
+    console.log(places)
       return (
         <div className="App">
   
@@ -194,15 +209,27 @@ class App extends React.Component {
 
                   <Route 
                     exact path="/explore" 
-                    render={props => (
-                      <ExploreComponent {...props} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
+                    render={() => (
+                      <ExploreComponent 
+                        explore={this.state.places} 
+                        addFavorite={this.addFavorite} 
+                        removeFavorite={this.removeFavorite} 
+                      />
                     )}
                   />
 
 
                   <Route
                     exact path="/favorites" 
-                    render={() => <FavoriteComponent places={user.places}/>}
+                    render={() => (
+                      <FavoriteComponent 
+                        places={user.places} 
+                        // filterBar={this.handleFilterChange}
+                        // sortBar={this.handleSortChange}
+                        // filtered={filter} 
+                        // sorted={sort}
+                      />
+                    )}
                   />
 
                   <Route

@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const ExploreCard = ({place, handleClick}) => {
-    const {name, image} = place
+    const {name, category, image} = place
     
         
     return(
@@ -14,6 +14,7 @@ const ExploreCard = ({place, handleClick}) => {
             onClick={() => handleClick(place)}
         >
             <h2>{name}</h2>
+            <h5>Category: {category}</h5>
             <img src={image} 
             style={{width: 500, height: "auto"}}
             alt={name} />
