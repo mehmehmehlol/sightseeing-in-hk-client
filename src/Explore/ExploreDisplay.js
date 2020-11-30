@@ -2,13 +2,6 @@ import React from 'react';
 import ExploreCard from './ExploreCard';
 
 class ExploreDisplay extends React.Component {
-    // {places, filtered, sorted, displayPlaceInfo}
-    // filter
-    // const categoryState = filtered === 'Attraction';
-
-    // const filteredPlaces = filtered === 'All' ? places : places.filter(place => place.category === categoryState)
-
-    
     filteredPlaces = () => {
         const { filtered, places } = this.props
         if (filtered === 'all') {
@@ -31,17 +24,6 @@ class ExploreDisplay extends React.Component {
         }
     }
         
-    //     console.log(places)
-    //     if (filtered) {
-    //         return places.filter(p => (
-    //             // console.log(p.category)
-    //             p.category === filtered
-    //             ))
-    //     } else{
-    //         return places;
-    //     }
-    // }
-
     // sort
     sortPlaces = () => {
         const { sorted } = this.props
