@@ -224,10 +224,6 @@ class App extends React.Component {
                     render={() => (
                       <FavoriteComponent 
                         places={user.places} 
-                        // filterBar={this.handleFilterChange}
-                        // sortBar={this.handleSortChange}
-                        // filtered={filter} 
-                        // sorted={sort}
                       />
                     )}
                   />

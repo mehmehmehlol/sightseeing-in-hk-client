@@ -27,8 +27,9 @@ class ExploreDisplay extends React.Component {
     // sort
     sortPlaces = () => {
         const { sorted } = this.props
-        console.log(this.filteredPlaces())
+        // console.log(this.filteredPlaces())
         if (sorted === 'none') {
+            // console.log(this.filteredPlaces())
             return this.filteredPlaces();
         }
         if (sorted === 'alphabetically') {
