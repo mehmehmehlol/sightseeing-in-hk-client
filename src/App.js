@@ -38,22 +38,23 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        debugger
-        this.setState({user: data.user})
+        // debugger
+        this.setState({user: data.user.data.attributes})
       })
     }
 
     //fetch places
     fetch('http://localhost:3001/places')
         .then(res => res.json())
-        // debugger
         .then(data => { 
           console.log(data)
+          // debugger
           this.setState({places: data})
         })
   }
 
 
+  // auth
 
   renderForm = (routerProps) => {
     if (routerProps.location.pathname === "/login"){
@@ -93,14 +94,14 @@ class App extends React.Component {
      .then(res => res.json())
      .then(data => {
        console.log(data)
-       debugger
+      //  debugger
        localStorage.setItem('token', data.token)
        this.setState({
           user: 
             // id: data.user.data.id,
             // places: data.user.data.attributes.places,
             // first_name: data.user.data.attributes.first_name
-            data.user
+            data.user.data.attributes
           
         }, () => {
         this.props.history.push('/') 
@@ -132,11 +133,7 @@ class App extends React.Component {
         //  debugger
          localStorage.setItem('token', data.token)
          this.setState({
-           user: {
-             id: data.user.data.id,
-             places: data.user.attributes.places,
-             first_name: data.user.data.attributes.first_name
-           }
+           user: data.user.data.attributes
           }, () => {
             // console.log(this.props.history)
           this.props.history.push('/') 
@@ -154,6 +151,10 @@ class App extends React.Component {
     return <Redirect to="/" push={true} />
   }
 
+  
+
+  
+  
 
 
   // Favorites
@@ -194,8 +195,8 @@ class App extends React.Component {
 
   render() {
 
-    const { user } = this.state
-    // console.log(user)
+    const { user, places } = this.state
+    console.log(places)
       return (
         <div className="App">
   
@@ -209,14 +210,26 @@ class App extends React.Component {
                   <Route 
                     exact path="/explore" 
                     render={() => (
-                      <ExploreComponent explore={this.state.places} addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} />
+                      <ExploreComponent 
+                        explore={this.state.places} 
+                        addFavorite={this.addFavorite} 
+                        removeFavorite={this.removeFavorite} 
+                      />
                     )}
                   />
 
 
                   <Route
                     exact path="/favorites" 
-                    render={() => <FavoriteComponent user={user}/>}
+                    render={() => (
+                      <FavoriteComponent 
+                        places={user.places} 
+                        // filterBar={this.handleFilterChange}
+                        // sortBar={this.handleSortChange}
+                        // filtered={filter} 
+                        // sorted={sort}
+                      />
+                    )}
                   />
 
                   <Route

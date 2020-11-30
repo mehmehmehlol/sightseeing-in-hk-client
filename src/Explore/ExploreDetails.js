@@ -24,11 +24,11 @@ const ExploreDetails = ({selected, backToMain}) => {
                 <br />
                 Address: {address}<br/>
                 Phone Number: <a href="tel:{phone_number}">{phone_number}</a>
-                {/* <div>
+                <div>
                     
                    Tags: {selected.tags.map(tag => tag.name + " ")}
-                   Tags: {selected.tags.map(tag => console.log(tag))}
-               </div> */}
+                   {/* Tags: {selected.tags.map(tag => console.log(tag))} */}
+               </div>
                <br />
                 <button 
                 className="detail-btn"
