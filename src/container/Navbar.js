@@ -17,7 +17,7 @@ const Navbar = ({user}) => {
 
     return (
         <Menu>
-            <Link className='menu-item' to='/home'>Home</Link><br />
+            <Link className='menu-item' to='/'>Home</Link><br />
             <Link className='menu-item' to='/explore'>Explore</Link><br /> 
             
              {

@@ -5,6 +5,7 @@ import MapContainer from '../GoogleApi/MapContainer'
 const ExploreDetails = ({selected, backToMain}) => {
     const {name, image, description, website, address, phone_number, latitude, longitude} = selected
     console.log(selected)
+    debugger
     return(
         <div>
             <h2>{name}</h2>
@@ -25,8 +26,8 @@ const ExploreDetails = ({selected, backToMain}) => {
                 Phone Number: <a href="tel:{phone_number}">{phone_number}</a>
                 <div>
                     
-                   {/* Tags: {selected.tags.map(tag => tag.name + " ")} */}
-                   Tags: {selected.tags.map(tag => console.log(tag))}
+                   Tags: {selected.tags.map(tag => tag.name + " ")}
+                   {/* Tags: {selected.tags.map(tag => console.log(tag))} */}
                </div>
                <br />
                 <button 
