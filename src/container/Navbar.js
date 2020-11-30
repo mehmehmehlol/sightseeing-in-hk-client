@@ -6,15 +6,6 @@ import './Navbar.css'
 
 const Navbar = ({user}) => {
 
-    // const handleClick = () => {
-    //     axios.delete('http://localhost:3001/logout', {withCredentials: true})
-    //     .then(res => {
-    //         props.handleLogout()
-    //         props.history.push('/')
-    //     })
-    //     .catch(error => console.log(error))
-    // }
-
     return (
         <Menu>
             <Link className='menu-item' to='/'>Home</Link><br />

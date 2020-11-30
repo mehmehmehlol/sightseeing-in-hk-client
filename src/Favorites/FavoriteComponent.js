@@ -19,13 +19,13 @@ class FavoriteComponent extends React.Component {
 
     // filter
     selectFilter = (filtered) => {
-        console.log(filtered)
+        // console.log(filtered)
         this.setState({ filtered })
     }
 
     // sort
     selectSort = (sorted) => {
-        console.log(sorted)
+        // console.log(sorted)
         this.setState({ sorted })
     }
 
@@ -44,7 +44,6 @@ class FavoriteComponent extends React.Component {
                     sorted={this.state.sorted} 
                     displayPlaceInfo={this.displayFavInfo} 
                     /> 
-                //    this.props.places.map(place => <ExploreCard key={place.name} handleClick={this.displayFavInfo} place={place} />) 
                    :
                    <ExploreDetails selected={this.state.chosenFavorite} backToMain={this.closeFav} />
                 }

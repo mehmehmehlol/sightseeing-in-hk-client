@@ -151,12 +151,6 @@ class App extends React.Component {
     return <Redirect to="/" push={true} />
   }
 
-  
-
-  
-  
-
-
   // Favorites
   
 
@@ -195,8 +189,8 @@ class App extends React.Component {
 
   render() {
 
-    const { user, places } = this.state
-    console.log(places)
+    const { user } = this.state
+    // console.log(places)
       return (
         <div className="App">
   
@@ -227,11 +221,11 @@ class App extends React.Component {
                       />
                     )}
                   />
-
+{/* 
                   <Route
                     exact path="/profile"
                     render={() => <Profile />} 
-                  />
+                  /> */}
             </Switch>
 
 

@@ -25,37 +25,6 @@ class ExploreComponent extends React.Component {
         this.setState({ sorted })
     }
 
-    // sortPlaces = () => {
-    //     const { sorted } = this.state
-    //     if (sorted === 'None') {
-    //         return this.filterPlaces()
-    //     }
-    //     if (sorted === 'Alphabetically') {
-    //         return this.filterPlaces().sort((a,b) => {
-    //             if (a.name < b.name) {
-    //                 return -1
-    //             }
-    //             return 1
-    //         })
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     fetch('http://localhost:3001/places')
-    //     .then(res => res.json())
-    //     // debugger
-    //     .then(data => { this.setState({
-    //         places: data.data.map(place => place.attributes)})}
-    //     )
-    // }
-
-
-    // selectPlace = id => {
-    //     this.setState({
-    //         chosenPlace: this.state.places.find(place => place.id === id)
-    //     })
-    // }
-
     displayPlaceInfo = (place) => {
         this.setState({chosenPlace: this.state.places.find(p => p === place)})
     }
@@ -68,7 +37,7 @@ class ExploreComponent extends React.Component {
 
     render() {
         const { places } = this.state 
-        console.log(places)
+        // console.log(places)
         // debugger
         return(
             <div>
