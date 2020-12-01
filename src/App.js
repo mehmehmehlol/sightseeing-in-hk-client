@@ -10,9 +10,9 @@ import Home from './container/Home'
 import Navbar from './container/Navbar';
 
 // import ExploreDetails from './Explore/ExploreDetails';
-import ExploreComponent from './Explore/ExploreComponent'
-import FavoriteComponent from './Favorites/FavoriteComponent';
-import Profile from './User/Profile';
+import ExploreContainer from './Explore/ExploreContainerjs'
+import FavoriteContainer from './Favorites/FavoriteContainer';
+// import Profile from './User/Profile';
 // import MapContainer from './GoogleApi/MapContainer';
 
 
@@ -24,7 +24,7 @@ class App extends React.Component {
     user: {},
     token: '',
     places: [],
-    favorites: []
+    favorites: [], 
   }
 
   componentDidMount() {
@@ -37,19 +37,22 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         // debugger
-        this.setState({user: data.user.data.attributes})
+        this.setState({
+          user: data.user.data.attributes,
+          favorites: data.user.data.attributes.places
+        })
       })
     }
 
     //fetch places
     fetch('http://localhost:3001/places')
         .then(res => res.json())
-        .then(data => { 
-          console.log(data)
+        .then(places => { 
+          // console.log(data)
           // debugger
-          this.setState({places: data})
+          this.setState({places})
         })
   }
 
@@ -142,7 +145,6 @@ class App extends React.Component {
       
         })
         .catch(errors => console.log(errors))
-        // .then(this.props.history.push('/home'))
       }
 
    handleLogout = (user) => {
@@ -152,22 +154,26 @@ class App extends React.Component {
   }
 
   // Favorites
-  
 
   addFavorite = (place) => {
-    const newFavorite = { favorites: {place_id: place.id, user_id: this.state.user.id}}
+    const token = localStorage.getItem('token')
+    const newFavorite = { favorite: {place_id: place.id, user_id: this.state.user.id}}
     fetch(`http://localhost:3001/favorites`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization' : `Bearer ${token}`
       },
       body: JSON.stringify(newFavorite)
     })
     .then(res => res.json())
     .then(favorite => {
+      console.log(favorite)
+      if(!this.state.favorites.includes(place)) {
       this.setState(prevState => {
         return {favorites: [...prevState.favorites, favorite]}
-      })
+      }
+      )}
     })
   }
 
@@ -189,8 +195,8 @@ class App extends React.Component {
 
   render() {
 
-    const { user } = this.state
-    // console.log(places)
+    const { user, favorites } = this.state
+    // console.log(user)
       return (
         <div className="App">
   
@@ -204,20 +210,18 @@ class App extends React.Component {
                   <Route 
                     exact path="/explore" 
                     render={() => (
-                      <ExploreComponent 
-                        explore={this.state.places} 
+                      <ExploreContainer
                         addFavorite={this.addFavorite} 
                         removeFavorite={this.removeFavorite} 
                       />
                     )}
                   />
-
-
                   <Route
                     exact path="/favorites" 
                     render={() => (
-                      <FavoriteComponent 
-                        places={user.places} 
+                      <FavoriteContainer
+                        favorites={favorites}
+                        removeFavorite={this.removeFavorite}
                       />
                     )}
                   />

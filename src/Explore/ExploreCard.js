@@ -3,7 +3,7 @@ import React from 'react';
 // import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 
-const ExploreCard = ({place, handleClick}) => {
+const ExploreCard = ({place, handleClick, addFavorite}) => {
     const {name, category, image} = place
     
         
@@ -18,7 +18,9 @@ const ExploreCard = ({place, handleClick}) => {
             <img src={image} 
             style={{width: 500, height: "auto"}}
             alt={name} />
-            
+            <br />
+            {   
+                <button onClick={() => {addFavorite(place)}}>Add to Favorite</button>}
         </div>
     )
 };

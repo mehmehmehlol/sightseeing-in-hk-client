@@ -1,10 +1,11 @@
 import React from 'react'
 // import ExploreCard from '../Explore/ExploreCard'
-import ExploreDisplay from '../Explore/ExploreDisplay'
+// import ExploreDisplay from '../Explore/ExploreDisplay'
 import ExploreDetails from '../Explore/ExploreDetails'
 import FilterSort from '../container/FilterSort';
+import FavoriteDisplay from './FavoriteDisplay';
 
-class FavoriteComponent extends React.Component {
+class FavoriteContainer extends React.Component {
 
     state = {
         chosenFavorite: null,
@@ -14,7 +15,7 @@ class FavoriteComponent extends React.Component {
 
     displayFavInfo = (place) => {
         // console.log(place)
-        this.setState({chosenFavorite: this.props.places.find(p => p === place)})
+        this.setState({chosenFavorite: this.props.favorites.find(p => p === place)})
     }
 
     // filter
@@ -38,11 +39,11 @@ class FavoriteComponent extends React.Component {
                 <h1>Favorites</h1>
                 <FilterSort selectFilter={this.selectFilter} selectSort={this.selectSort} />
                 {!this.state.chosenFavorite ?
-                    <ExploreDisplay 
-                    places={this.props.places} 
+                    <FavoriteDisplay
+                    favorites={this.props.favorites} 
                     filtered={this.state.filtered} 
                     sorted={this.state.sorted} 
-                    displayPlaceInfo={this.displayFavInfo} 
+                    displayFavInfo={this.displayFavInfo} 
                     /> 
                    :
                    <ExploreDetails selected={this.state.chosenFavorite} backToMain={this.closeFav} />
@@ -52,4 +53,4 @@ class FavoriteComponent extends React.Component {
     }
 }
 
-export default FavoriteComponent
+export default FavoriteContainer;

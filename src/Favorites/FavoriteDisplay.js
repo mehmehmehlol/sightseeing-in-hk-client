@@ -1,26 +1,26 @@
-import React from 'react';
-import ExploreCard from './ExploreCard';
+import React from 'react'
+import ExploreCard from '../Explore/ExploreCard'
 
-class ExploreDisplay extends React.Component {
+class FavoriteDisplay extends React.Component {
     filteredPlaces = () => {
-        const { filtered, places } = this.props
+        const { filtered, favorites } = this.props
         if (filtered === 'all') {
-            return places
+            return favorites
         }
         if (filtered === 'Attraction') {
-            return [...places].filter(place => place.category === 'Attraction')
+            return [...favorites].filter(place => place.category === 'Attraction')
         }
         if (filtered === 'Outdoor') {
-            return [...places].filter(place => place.category === 'Outdoor')
+            return [...favorites].filter(place => place.category === 'Outdoor')
         }
         if (filtered === 'Shopping') {
-            return [...places].filter(place => place.category === 'Shopping')
+            return [...favorites].filter(place => place.category === 'Shopping')
         }
         if (filtered === 'Nightlife') {
-            return [...places].filter(place => place.category === 'Nightlife')
+            return [...favorites].filter(place => place.category === 'Nightlife')
         }
         if (filtered === 'Dining') {
-            return [...places].filter(place => place.category === 'Dining')
+            return [...favorites].filter(place => place.category === 'Dining')
         }
     }
         
@@ -50,7 +50,7 @@ class ExploreDisplay extends React.Component {
                         <ExploreCard 
                             key={place.name} 
                             place={place} 
-                            handleClick={this.props.displayPlaceInfo} 
+                            handleClick={this.props.displayFavInfo} 
                             addFavorite={this.props.addFavorite}
                         />
                     )
@@ -58,7 +58,6 @@ class ExploreDisplay extends React.Component {
             </div>
         )
     }
-};
+}
 
-
-export default ExploreDisplay;
+export default FavoriteDisplay;

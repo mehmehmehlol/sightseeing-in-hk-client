@@ -3,7 +3,7 @@ import ExploreDisplay from './ExploreDisplay';
 import ExploreDetails from './ExploreDetails';
 import FilterSort from '../container/FilterSort';
 
-class ExploreComponent extends React.Component {
+class ExploreContainer extends React.Component {
 
     state = {
         places: this.props.explore,
@@ -48,14 +48,15 @@ class ExploreComponent extends React.Component {
                     places={places} 
                     filtered={this.state.filtered} 
                     sorted={this.state.sorted} 
-                    displayPlaceInfo={this.displayPlaceInfo} 
+                    displayPlaceInfo={this.displayPlaceInfo}
+                    addFavorite={this.props.addFavorite} 
                 /> 
                 :
-                <ExploreDetails selected={this.state.chosenPlace} backToMain={this.backToMain} /> 
+                <ExploreDetails selected={this.state.chosenPlace} addFavorite={this.props.addFavorite} backToMain={this.backToMain} /> 
                 }
             </div>
         )
     }
 }
 
-export default ExploreComponent;
+export default ExploreContainer;
