@@ -50,8 +50,10 @@ class FavoriteDisplay extends React.Component {
                         <ExploreCard 
                             key={place.name} 
                             place={place} 
+                            favorites={this.props.favorites}
                             handleClick={this.props.displayFavInfo} 
                             addFavorite={this.props.addFavorite}
+                            removeFavorite={this.props.removeFavorite}
                         />
                     )
                 })}

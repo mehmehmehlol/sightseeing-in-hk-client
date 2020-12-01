@@ -52,6 +52,9 @@ class ExploreDisplay extends React.Component {
                             place={place} 
                             handleClick={this.props.displayPlaceInfo} 
                             addFavorite={this.props.addFavorite}
+                            removeFavorite={this.props.removeFavorite}
+                            favorites={this.props.favorites}
+                            user={this.props.user}
                         />
                     )
                 })}

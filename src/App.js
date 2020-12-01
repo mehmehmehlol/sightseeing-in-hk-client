@@ -10,7 +10,7 @@ import Home from './container/Home'
 import Navbar from './container/Navbar';
 
 // import ExploreDetails from './Explore/ExploreDetails';
-import ExploreContainer from './Explore/ExploreContainerjs'
+import ExploreContainer from './Explore/ExploreContainer.js'
 import FavoriteContainer from './Favorites/FavoriteContainer';
 // import Profile from './User/Profile';
 // import MapContainer from './GoogleApi/MapContainer';
@@ -157,28 +157,35 @@ class App extends React.Component {
 
   addFavorite = (place) => {
     const token = localStorage.getItem('token')
-    const newFavorite = { favorite: {place_id: place.id, user_id: this.state.user.id}}
+    // const newFavorite = { favorite: {place_id: place.id, user_id: this.state.user.id}}
     fetch(`http://localhost:3001/favorites`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization' : `Bearer ${token}`
       },
-      body: JSON.stringify(newFavorite)
+      body: JSON.stringify({place_id: place.id, user_id: this.state.user.id})
     })
     .then(res => res.json())
-    .then(favorite => {
-      console.log(favorite)
-      if(!this.state.favorites.includes(place)) {
-      this.setState(prevState => {
-        return {favorites: [...prevState.favorites, favorite]}
-      }
-      )}
+    .then(data => {
+      console.log(data)
+      console.log(this.state.user)
+      console.log(this.state.favorites)
+      debugger
+      if(!this.state.favorites.includes(data.place_id)) {
+        this.setState(prevState => {
+          return {favorites: [...prevState.favorites, data.place]}
+        }
+      )} 
+      console.log(this.state.favorites)
+      // change to user.favorites???
     })
   }
 
   removeFavorite = (place) => {
-    const fav = this.state.favorites.find(favorite => favorite.place.id === place.id)
+    const fav = this.state.user.favorites.find(favorite => favorite.place_id === place.id)
+    console.log(fav)
+    // debugger
     fetch(`http://localhost:3001/favorites/${fav.id}`, {
       method: 'DELETE',
       headers: {
@@ -195,8 +202,8 @@ class App extends React.Component {
 
   render() {
 
-    const { user, favorites } = this.state
-    // console.log(user)
+    const { user, favorites, places } = this.state
+    console.log(favorites)
       return (
         <div className="App">
   
@@ -213,6 +220,9 @@ class App extends React.Component {
                       <ExploreContainer
                         addFavorite={this.addFavorite} 
                         removeFavorite={this.removeFavorite} 
+                        favorites={favorites}
+                        places={places}
+                        user={user}
                       />
                     )}
                   />

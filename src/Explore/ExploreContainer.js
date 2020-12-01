@@ -6,7 +6,7 @@ import FilterSort from '../container/FilterSort';
 class ExploreContainer extends React.Component {
 
     state = {
-        places: this.props.explore,
+        places: this.props.places,
         chosenPlace: null,
         filtered: 'all', 
         sorted: 'none'
@@ -49,7 +49,10 @@ class ExploreContainer extends React.Component {
                     filtered={this.state.filtered} 
                     sorted={this.state.sorted} 
                     displayPlaceInfo={this.displayPlaceInfo}
-                    addFavorite={this.props.addFavorite} 
+                    addFavorite={this.props.addFavorite}
+                    removeFavorite={this.props.removeFavorite} 
+                    favorites={this.props.favorites}
+                    user={this.props.user}
                 /> 
                 :
                 <ExploreDetails selected={this.state.chosenPlace} addFavorite={this.props.addFavorite} backToMain={this.backToMain} /> 
