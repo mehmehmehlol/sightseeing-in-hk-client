@@ -37,7 +37,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
+        console.log(data)
         // debugger
         this.setState({
           user: data.user.data.attributes,
@@ -46,14 +46,14 @@ class App extends React.Component {
       })
     }
 
-    //fetch places
-    fetch('http://localhost:3001/places')
-        .then(res => res.json())
-        .then(places => { 
-          // console.log(data)
-          // debugger
-          this.setState({places})
-        })
+  //   //fetch places
+  //   fetch('http://localhost:3001/places')
+  //       .then(res => res.json())
+  //       .then(places => { 
+  //         // console.log(data)
+  //         // debugger
+  //         this.setState({places})
+  //       })
   }
 
 
@@ -169,20 +169,19 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
-      console.log(this.state.user)
+      // console.log(this.state.user.favorites)
       console.log(this.state.favorites)
-      debugger
-      if(!this.state.favorites.includes(data.place_id)) {
+      // debugger
+      // if(!this.state.user.favorites.some(favorite => favorite.place_id === data.place_id)) {
+      //   console.log(this.state.user.favorites)
         this.setState(prevState => {
           return {favorites: [...prevState.favorites, data.place]}
-        }
-      )} 
-      console.log(this.state.favorites)
-      // change to user.favorites???
-    })
+        })
+      })
   }
 
   removeFavorite = (place) => {
+    // debugger
     const fav = this.state.user.favorites.find(favorite => favorite.place_id === place.id)
     console.log(fav)
     // debugger
@@ -193,16 +192,17 @@ class App extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(favorite => {
+    .then(data => {
+      // debugger
       this.setState(prevState => {
-        return {favorites: prevState.favorites.filter(favorite => favorite.id !== fav.id)}
+        return {favorites: prevState.favorites.filter(favorite => favorite.id !== data.place_id)}
       })
     })
   }
 
   render() {
 
-    const { user, favorites, places } = this.state
+    const { user, favorites } = this.state
     console.log(favorites)
       return (
         <div className="App">
@@ -220,17 +220,30 @@ class App extends React.Component {
                       <ExploreContainer
                         addFavorite={this.addFavorite} 
                         removeFavorite={this.removeFavorite} 
-                        favorites={favorites}
-                        places={places}
+                        favorites={user.places}
+                        // places={places}
                         user={user}
                       />
                     )}
                   />
+                  {/* <Route 
+                    exact path="/explore/:id" 
+                    render={() => (
+                      <ExploreDetails
+                        addFavorite={this.addFavorite} 
+                        removeFavorite={this.removeFavorite} 
+                        favorites={user.places}
+                        // places={places}
+                        user={user}
+                      />
+                    )}
+                  /> */}
+
                   <Route
                     exact path="/favorites" 
                     render={() => (
                       <FavoriteContainer
-                        favorites={favorites}
+                        favorites={user.places}
                         removeFavorite={this.removeFavorite}
                       />
                     )}

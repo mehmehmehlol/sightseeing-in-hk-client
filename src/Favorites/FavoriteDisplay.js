@@ -33,7 +33,7 @@ class FavoriteDisplay extends React.Component {
             return this.filteredPlaces();
         }
         if (sorted === 'alphabetically') {
-            return this.filteredPlaces().sort((a,b) => {
+            return [...this.filteredPlaces()].sort((a,b) => {
                 if (a.name < b.name) {
                     return -1
                 }

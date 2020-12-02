@@ -15,6 +15,7 @@ const Sort = ({ selectSort }) => {
                     value="none"
                     id="none"
                     onChange={handleSortChange}
+                    defaultChecked
                 />
                 <label htmlFor="none">None</label>  
                 

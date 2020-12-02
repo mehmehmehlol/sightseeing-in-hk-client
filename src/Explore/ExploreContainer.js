@@ -6,11 +6,22 @@ import FilterSort from '../container/FilterSort';
 class ExploreContainer extends React.Component {
 
     state = {
-        places: this.props.places,
+        places: [],
         chosenPlace: null,
         filtered: 'all', 
         sorted: 'none'
 
+    }
+
+    //fetch places
+    componentDidMount() {
+    fetch('http://localhost:3001/places')
+        .then(res => res.json())
+        .then(places => { 
+          // console.log(data)
+          // debugger
+          this.setState({places})
+        })
     }
 
     // filter
@@ -21,7 +32,7 @@ class ExploreContainer extends React.Component {
 
     // sort
     selectSort = (sorted) => {
-        console.log(sorted)
+        // console.log(sorted)
         this.setState({ sorted })
     }
 
@@ -55,7 +66,13 @@ class ExploreContainer extends React.Component {
                     user={this.props.user}
                 /> 
                 :
-                <ExploreDetails selected={this.state.chosenPlace} addFavorite={this.props.addFavorite} backToMain={this.backToMain} /> 
+                <ExploreDetails 
+                    selected={this.state.chosenPlace} 
+                    favorites={this.props.favorites}
+                    addFavorite={this.props.addFavorite} 
+                    removeFavorite={this.props.removeFavorite} 
+                    backToMain={this.backToMain} 
+                /> 
                 }
             </div>
         )
