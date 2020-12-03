@@ -1,7 +1,7 @@
 import React from 'react';
 import ExploreDisplay from './ExploreDisplay';
 import ExploreDetails from './ExploreDetails';
-import FilterSort from '../container/FilterSort';
+import FilterSort from '../FilterSort/FilterSort';
 
 class ExploreContainer extends React.Component {
     state = {
