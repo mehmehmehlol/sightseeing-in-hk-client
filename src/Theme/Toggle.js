@@ -20,6 +20,7 @@ export const ToggleContainer = styled.button`
     position: relative;
     width: 60px;
     height: 33px;
+    float: right;
   
 
     svg {

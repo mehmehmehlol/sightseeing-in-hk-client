@@ -1,32 +1,35 @@
 import React from 'react';
 // import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { slide as Menu } from 'react-burger-menu'
+// import { Link } from 'react-router-dom';
 import './Navbar.css'
+import Toggle from '../Theme/Toggle'
 
-const Navbar = ({user}) => {
+const Navbar = ({user, theme, toggleTheme}) => {
 
     return (
-        <Menu>
-            <Link className='menu-item' to='/'>Home</Link><br />
-            <Link className='menu-item' to='/explore'>Explore</Link><br /> 
+        <div className='navbar'>
             
-             {
-                 user ?
-                 <>
-                 <Link className='menu-item' to='/favorites'>Favorites</Link><br/>
-                 <Link className="menu-item" to='/logout'>Log Out</Link> 
-                 </>
-                 :
-                 <>
-                     <Link className="menu-item" to='/login'>Log In</Link>
-                     <br />
-                     <Link className="menu-item" to='/signup'>Sign Up</Link>
-                     <br />
-                 </>
-             }
-    
-        </Menu>
+            <div className="topnav-right">
+            
+                <a className='navlink' href='/'>Home</a>
+                <a className='navlink' href='/explore'>Explore</a>
+                
+                {
+                    user ?
+                    <>
+                    <a className='navlink' href='/profile'>Hi, {user.first_name}</a>
+                    <a className='navlink' href='/favorites'>Favorites</a>
+                    <a className="navlink" href='/logout'>Log Out</a> 
+                    </>
+                    :
+                    <>
+                        <a className="navlink" href='/login'>Log In</a>
+                        <a className="navlink" href='/signup'>Sign Up</a>
+                    </>
+                }
+            </div>
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
+        </div>
     )
 }
 

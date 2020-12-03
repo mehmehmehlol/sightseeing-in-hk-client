@@ -3,7 +3,6 @@ import './App.css';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 import { ThemeProvider } from "styled-components"
-// import useDarkMode from './Theme/useDarkMode'
 import { GlobalStyles } from './Theme/GlobalStyles'
 import { lightTheme, darkTheme } from './Theme/Themes'
 import Toggle from './Theme/Toggle'
@@ -196,50 +195,50 @@ class App extends React.Component {
     // debugger
     console.log(user)
       return (
-        
+       
             <div className="App">
-              
-                  <Navbar user={user}/>
-                  <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme} >
-                    <>
-                    <GlobalStyles />
-                    {/* <button onClick={this.toggleTheme}>Toggle Theme</button> */}
-                    <Toggle theme={this.state.theme} toggleTheme={this.toggleTheme} />
-                  <Switch>
-                      <Route exact path = '/' render={() => <Home user={user} />} />
-                      <Route exact path = '/login' component = {this.renderForm} />
-                      <Route exact path = "/signup" component = {this.renderForm} />
-                      <Route exact path = '/logout' component={() => this.handleLogout()} />
+               <Navbar theme={this.state.theme} toggleTheme={this.toggleTheme} user={user}/>
+                  <div className="body">
+                    <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme} >
+                      <>
+                      <GlobalStyles />
+                      {/* <button onClick={this.toggleTheme}>Toggle Theme</button> */}
+                      {/* <Toggle theme={this.state.theme} toggleTheme={this.toggleTheme} /> */}
+                    <Switch>
+                        <Route exact path = '/' render={() => <Home user={user} />} />
+                        <Route exact path = '/login' component = {this.renderForm} />
+                        <Route exact path = "/signup" component = {this.renderForm} />
+                        <Route exact path = '/logout' component={() => this.handleLogout()} />
 
-                      <Route 
-                        exact path="/explore" 
-                        render={() => (
-                          <ExploreContainer
-                            addFavorite={this.addFavorite} 
-                            removeFavorite={this.removeFavorite} 
-                            favorites={favorites}
-                            user={user}
-                          />
-                        )}
-                      />
-                      <Route
-                        exact path="/favorites" 
-                        render={() => (
-                          <FavoriteContainer
-                            favorites={favorites}
-                            removeFavorite={this.removeFavorite}
-                          />
-                        )}
-                      />
-    {/* 
-                      <Route
-                        exact path="/profile"
-                        render={() => <Profile />} 
-                      /> */}
-                </Switch>
-                </>
-              </ThemeProvider>
-
+                        <Route 
+                          exact path="/explore" 
+                          render={() => (
+                            <ExploreContainer
+                              addFavorite={this.addFavorite} 
+                              removeFavorite={this.removeFavorite} 
+                              favorites={favorites}
+                              user={user}
+                            />
+                          )}
+                        />
+                        <Route
+                          exact path="/favorites" 
+                          render={() => (
+                            <FavoriteContainer
+                              favorites={favorites}
+                              removeFavorite={this.removeFavorite}
+                            />
+                          )}
+                        />
+      {/* 
+                        <Route
+                          exact path="/profile"
+                          render={() => <Profile />} 
+                        /> */}
+                  </Switch>
+                  </>
+                </ThemeProvider>
+              </div>
             </div>
 
       );
