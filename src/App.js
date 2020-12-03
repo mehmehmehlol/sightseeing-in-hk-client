@@ -19,11 +19,12 @@ import FavoriteContainer from './Favorites/FavoriteContainer';
 const profileURL = 'http://localhost:3001/profile'
 
 class App extends React.Component {
+  // _isMounted = false;
 
   state = {
     user: {},
     token: '',
-    places: [],
+    // places: [],
     favorites: [], 
   }
 
@@ -46,15 +47,22 @@ class App extends React.Component {
       })
     }
 
-  //   //fetch places
-  //   fetch('http://localhost:3001/places')
-  //       .then(res => res.json())
-  //       .then(places => { 
-  //         // console.log(data)
-  //         // debugger
-  //         this.setState({places})
-  //       })
+    // //fetch places
+    // this._isMounted = true
+    // fetch('http://localhost:3001/places')
+    //     .then(res => res.json())
+    //     .then(places => { 
+    //     // console.log(data)
+    //     // debugger
+    //         if (this._isMounted) {
+    //             this.setState({places})
+    //         }
+    //     })
   }
+
+  // componentWillUnmount() {
+  //   this._isMounted = false;
+  // }
 
 
   // auth
@@ -169,23 +177,30 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      // console.log(this.state.user)
+      debugger
       // console.log(this.state.user.favorites)
-      console.log(this.state.favorites)
+      // console.log(this.state.favorites)
       // debugger
       // if(!this.state.user.favorites.some(favorite => favorite.place_id === data.place_id)) {
       //   console.log(this.state.user.favorites)
         this.setState(prevState => {
-          return {favorites: [...prevState.favorites, data.place]}
+          // debugger
+          return {
+            favorites: [...prevState.favorites, data.data.attributes.place]
+            // user: [...prevState.user.favorites, data.data.attributes]
+          }
         })
       })
+      
   }
 
   removeFavorite = (place) => {
     // debugger
-    const fav = this.state.user.favorites.find(favorite => favorite.place_id === place.id)
-    console.log(fav)
+    const fav = this.state.favorites.find(favorite => favorite.id === place.id)
+    // console.log(fav)
     // debugger
-    fetch(`http://localhost:3001/favorites/${fav.id}`, {
+    fetch(`http://localhost:3001/favorites/${fav.fav_id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -194,16 +209,24 @@ class App extends React.Component {
     .then(res => res.json())
     .then(data => {
       // debugger
+      console.log(data)
       this.setState(prevState => {
-        return {favorites: prevState.favorites.filter(favorite => favorite.id !== data.place_id)}
+        // debugger
+        return {
+          favorites: prevState.favorites.filter(favorite => favorite.id !== data.data.attributes.place.id)
+          // user: prevState.user.favorites.filter(favorite => favorite.place_id !== data.place_id)
+        }
       })
     })
+
   }
 
   render() {
 
     const { user, favorites } = this.state
     console.log(favorites)
+    // debugger
+    console.log(user)
       return (
         <div className="App">
   
@@ -220,7 +243,7 @@ class App extends React.Component {
                       <ExploreContainer
                         addFavorite={this.addFavorite} 
                         removeFavorite={this.removeFavorite} 
-                        favorites={user.places}
+                        favorites={favorites}
                         // places={places}
                         user={user}
                       />
@@ -243,7 +266,7 @@ class App extends React.Component {
                     exact path="/favorites" 
                     render={() => (
                       <FavoriteContainer
-                        favorites={user.places}
+                        favorites={favorites}
                         removeFavorite={this.removeFavorite}
                       />
                     )}

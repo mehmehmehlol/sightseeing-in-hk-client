@@ -4,25 +4,24 @@ import ExploreDetails from './ExploreDetails';
 import FilterSort from '../container/FilterSort';
 
 class ExploreContainer extends React.Component {
-
     state = {
         places: [],
         chosenPlace: null,
         filtered: 'all', 
-        sorted: 'none'
-
+        sorted: 'none',
+        // favorites: this.props.favorites
     }
 
-    //fetch places
+    // fetch places
     componentDidMount() {
-    fetch('http://localhost:3001/places')
-        .then(res => res.json())
-        .then(places => { 
-          // console.log(data)
-          // debugger
-          this.setState({places})
-        })
+        
+        fetch('http://localhost:3001/places')
+            .then(res => res.json())
+            .then(places => { 
+                this.setState({places})
+            })
     }
+
 
     // filter
     selectFilter = (filtered) => {
@@ -68,9 +67,7 @@ class ExploreContainer extends React.Component {
                 :
                 <ExploreDetails 
                     selected={this.state.chosenPlace} 
-                    favorites={this.props.favorites}
-                    addFavorite={this.props.addFavorite} 
-                    removeFavorite={this.props.removeFavorite} 
+                    favorites={this.props.favorites} 
                     backToMain={this.backToMain} 
                 /> 
                 }

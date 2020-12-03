@@ -1,5 +1,3 @@
-// import { render } from '@testing-library/react';
-import { render } from '@testing-library/react';
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
 import MapContainer from '../GoogleApi/MapContainer'
@@ -10,7 +8,7 @@ class ExploreDetails extends React.Component {
     // }
     
     render() {
-        const {selected, favorites, addFavorite, removeFavorite, backToMain} = this.props
+        const {selected, favorites, backToMain} = this.props
         const {name, image, description, website, address, phone_number, latitude, longitude} = selected
         console.log(favorites)
         console.log(selected)
@@ -39,13 +37,6 @@ class ExploreDetails extends React.Component {
                     {/* Tags: {selected.tags.map(tag => console.log(tag))} */}
                 </div>
                 <br />
-                {   
-                    !favorites.some(favorite => favorite.id === selected.id) ?
-                    <button onClick={() => {addFavorite(selected)}}>Add to Favorite</button> 
-                    :
-                    <button onClick={() => {removeFavorite(selected)}}>Remove Favorite</button>
-                
-                    }
                     <button 
                     className="detail-btn"
                     onClick={() => {backToMain()}}

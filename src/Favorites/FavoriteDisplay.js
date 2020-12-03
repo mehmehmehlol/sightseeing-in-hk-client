@@ -1,5 +1,6 @@
 import React from 'react'
-import ExploreCard from '../Explore/ExploreCard'
+// import ExploreCard from '../Explore/ExploreCard'
+import FavoriteCard from './FavoriteCard'
 
 class FavoriteDisplay extends React.Component {
     filteredPlaces = () => {
@@ -47,13 +48,13 @@ class FavoriteDisplay extends React.Component {
             <div>
                 {this.sortPlaces().map(place => {
                     return(
-                        <ExploreCard 
+                        <FavoriteCard 
                             key={place.name} 
                             place={place} 
-                            favorites={this.props.favorites}
+                            // favorites={this.props.favorites}
                             handleClick={this.props.displayFavInfo} 
-                            addFavorite={this.props.addFavorite}
                             removeFavorite={this.props.removeFavorite}
+                            // newFav={this.props.newFav}
                         />
                     )
                 })}
