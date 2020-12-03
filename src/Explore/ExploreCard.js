@@ -1,6 +1,6 @@
 import React from 'react';
-// import { ExternalLink } from 'react-external-link';
-// import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const ExploreCard = ({place, handleClick, addFavorite, removeFavorite, favorites}) => {
@@ -21,9 +21,9 @@ const ExploreCard = ({place, handleClick, addFavorite, removeFavorite, favorites
             <br />
             {   
                 !favorites.some(favorite => favorite.id === place.id) ?
-                <button onClick={() => {addFavorite(place)}}>Add to Favorite</button> 
+                <FavoriteBorderIcon onClick={() => {addFavorite(place)}}  />
                 :
-                <button onClick={() => {removeFavorite(place)}}>Remove Favorite</button>
+                <FavoriteIcon onClick={() => {removeFavorite(place)}} />
                
             }
         </div>

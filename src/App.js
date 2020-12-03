@@ -1,5 +1,4 @@
 import React from 'react';
-// import axios from 'axios'
 import './App.css';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
@@ -9,22 +8,19 @@ import Signup from './Auth/Signup'
 import Home from './container/Home'
 import Navbar from './container/Navbar';
 
-// import ExploreDetails from './Explore/ExploreDetails';
 import ExploreContainer from './Explore/ExploreContainer.js'
 import FavoriteContainer from './Favorites/FavoriteContainer';
 // import Profile from './User/Profile';
-// import MapContainer from './GoogleApi/MapContainer';
+
 
 
 const profileURL = 'http://localhost:3001/profile'
 
 class App extends React.Component {
-  // _isMounted = false;
 
   state = {
     user: {},
     token: '',
-    // places: [],
     favorites: [], 
   }
 
@@ -38,32 +34,14 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        // debugger
+        // console.log(data)
         this.setState({
           user: data.user.data.attributes,
           favorites: data.user.data.attributes.places
         })
       })
     }
-
-    // //fetch places
-    // this._isMounted = true
-    // fetch('http://localhost:3001/places')
-    //     .then(res => res.json())
-    //     .then(places => { 
-    //     // console.log(data)
-    //     // debugger
-    //         if (this._isMounted) {
-    //             this.setState({places})
-    //         }
-    //     })
   }
-
-  // componentWillUnmount() {
-  //   this._isMounted = false;
-  // }
-
 
   // auth
 
@@ -77,20 +55,15 @@ class App extends React.Component {
   
  
    handleLogin = (info) => {
-    //  console.log(info)
-    //  console.log('login')
      this.handleSigninFetch(info, 'http://localhost:3001/login')
    }
 
    handleSignup = (info) => {
-    //  console.log('sign up')
      this.handleSignupFetch(info, 'http://localhost:3001/users' )
    }
 
 
    handleSigninFetch = (info, request) => {
-    //  console.log(info)
-    //  console.log(request)
      fetch(request, {
        method: 'POST',
        headers: {
@@ -104,16 +77,11 @@ class App extends React.Component {
      })
      .then(res => res.json())
      .then(data => {
-       console.log(data)
+      //  console.log(data)
       //  debugger
        localStorage.setItem('token', data.token)
        this.setState({
-          user: 
-            // id: data.user.data.id,
-            // places: data.user.data.attributes.places,
-            // first_name: data.user.data.attributes.first_name
-            data.user.data.attributes
-          
+          user: data.user.data.attributes
         }, () => {
         this.props.history.push('/') 
         })
@@ -122,8 +90,6 @@ class App extends React.Component {
   }
 
     handleSignupFetch = (info, request) => {
-      //  console.log(info)
-      //  console.log(request)
        fetch(request, {
          method: 'POST',
          headers: {
@@ -146,11 +112,9 @@ class App extends React.Component {
          this.setState({
            user: data.user.data.attributes
           }, () => {
-            // console.log(this.props.history)
           this.props.history.push('/') 
          }
         )
-      
         })
         .catch(errors => console.log(errors))
       }
@@ -165,7 +129,6 @@ class App extends React.Component {
 
   addFavorite = (place) => {
     const token = localStorage.getItem('token')
-    // const newFavorite = { favorite: {place_id: place.id, user_id: this.state.user.id}}
     fetch(`http://localhost:3001/favorites`, {
       method: 'POST',
       headers: {
@@ -176,23 +139,15 @@ class App extends React.Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      // console.log(this.state.user)
-      debugger
-      // console.log(this.state.user.favorites)
-      // console.log(this.state.favorites)
+      // console.log(data)
       // debugger
-      // if(!this.state.user.favorites.some(favorite => favorite.place_id === data.place_id)) {
-      //   console.log(this.state.user.favorites)
         this.setState(prevState => {
           // debugger
           return {
             favorites: [...prevState.favorites, data.data.attributes.place]
-            // user: [...prevState.user.favorites, data.data.attributes]
           }
         })
       })
-      
   }
 
   removeFavorite = (place) => {
@@ -214,7 +169,6 @@ class App extends React.Component {
         // debugger
         return {
           favorites: prevState.favorites.filter(favorite => favorite.id !== data.data.attributes.place.id)
-          // user: prevState.user.favorites.filter(favorite => favorite.place_id !== data.place_id)
         }
       })
     })
@@ -244,7 +198,6 @@ class App extends React.Component {
                         addFavorite={this.addFavorite} 
                         removeFavorite={this.removeFavorite} 
                         favorites={favorites}
-                        // places={places}
                         user={user}
                       />
                     )}

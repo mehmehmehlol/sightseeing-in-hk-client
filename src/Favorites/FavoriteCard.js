@@ -1,6 +1,5 @@
 import React from 'react';
-// import { ExternalLink } from 'react-external-link';
-// import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const FavoriteCard = ({place, handleClick, removeFavorite}) => {
@@ -19,14 +18,8 @@ const FavoriteCard = ({place, handleClick, removeFavorite}) => {
             style={{width: 500, height: "auto"}}
             alt={name} />
             <br />
-            <button onClick={() => {removeFavorite(place)}}>Remove Favorite</button>
-            {/* {   
-                !favorites.some(favorite => favorite.id === place.id) ?
-                <button onClick={() => {addFavorite(place)}}>Add to Favorite</button> 
-                :
-                <button onClick={() => {removeFavorite(place)}}>Remove Favorite</button>
-               
-            } */}
+            <FavoriteIcon onClick={() => {removeFavorite(place)}} />
+
         </div>
     )
 };

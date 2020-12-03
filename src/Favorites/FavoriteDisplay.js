@@ -1,5 +1,4 @@
 import React from 'react'
-// import ExploreCard from '../Explore/ExploreCard'
 import FavoriteCard from './FavoriteCard'
 
 class FavoriteDisplay extends React.Component {
@@ -51,10 +50,8 @@ class FavoriteDisplay extends React.Component {
                         <FavoriteCard 
                             key={place.name} 
                             place={place} 
-                            // favorites={this.props.favorites}
                             handleClick={this.props.displayFavInfo} 
                             removeFavorite={this.props.removeFavorite}
-                            // newFav={this.props.newFav}
                         />
                     )
                 })}
