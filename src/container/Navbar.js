@@ -1,7 +1,5 @@
 import React from 'react';
-// import axios from 'axios';
 // import { Link } from 'react-router-dom';
-import './Navbar.css'
 import Toggle from '../Theme/Toggle'
 import logo from '../Images/Mod-5-Project.jpg'
 
@@ -9,10 +7,11 @@ const Navbar = ({user, theme, toggleTheme}) => {
     
     return (
         <div className='navbar'>
-            <img src={logo} alt="logo" />
+            <a className='navlink' href='/' style={{paddingTop: "5px", paddingBottom: "2px"}}>
+                    <img src={logo} alt="logo" />
+            </a>
+
             <div className="topnav-right">
-            
-                <a className='navlink' href='/'>Home</a>
                 <a className='navlink' href='/explore'>Explore</a>
                 
                 {
@@ -38,8 +37,9 @@ const Navbar = ({user, theme, toggleTheme}) => {
                         </div>
                     </>
                 }
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
             </div>
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
+            
         </div>
     )
 }
