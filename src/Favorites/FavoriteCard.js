@@ -12,11 +12,14 @@ const FavoriteCard = ({place, handleClick, removeFavorite}) => {
             className="favorite-card" 
             key={place.id} 
         >
-            <img src={image} alt={name} />
-            <FavoriteIcon onClick={() => {removeFavorite(place)}} style={{fill: "red"}}/>
-            <h2 onClick={() => handleClick(place)} style={{cursor: 'pointer'}}>{name}</h2>
-            <h5>Category: {category}</h5>
-
+            <div>
+                <img src={image} alt={name} />
+                <FavoriteIcon onClick={() => {removeFavorite(place)}} style={{fill: "red"}} className="heart-icon" />
+                <div className="favorite-hover-text">
+                    <h2 onClick={() => handleClick(place)} style={{cursor: 'pointer'}}>{name}</h2>
+                    <h5>Category: {category}</h5>
+                </div>
+            </div>
         </div>
     )
 };

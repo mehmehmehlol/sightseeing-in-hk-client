@@ -169,48 +169,134 @@
 
 .explore-card,
 .favorite-card {
+  position: relative;
+  /* text-align: center; */
   align-content: space-around;
   justify-content: center;
-  width: 300px;
-  height: 350px;
-  border-radius: 15px;
-  border-style: solid;
   transition: 0.5s all ease-in-out; 
+  /* opacity: 0.8 */
 }
 
-.explore-card:hover,
-.favorite-card:hover {
+.explore-text-over-image {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  height: 25px;
+}
+
+.explore-card img,
+.favorite-card img {
+  width: 415px;
+  height: 330px;
+  border-radius: 10px;
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.heart-icon {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+
+.explore-card:hover img,
+.favorite-card:hover img{
   transform: scale(1.05); 
   box-shadow: 0px 4px 8px rgba(40, 40, 40, 0.2);
   top: -4px;
   border: 1px solid #cccccc;
   border-style: dotted;
+  opacity: 0.3;
   /* background-color: green; */
 }
 
-
-.explore-card img,
-.favorite-card img {
-  width: 295px;
-  height: 200px;
-  border-radius: 10px;
-  
+.explore-hover-text,
+.favorite-hover-text {
+  transition: .2s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
 }
+
+.explore-card:hover .explore-hover-text,
+.favorite-card:hover .favorite-hover-text {
+  opacity: 1;
+  font-size: 12px;
+  /* opacity: 1; */
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 32px;
+}
+
+.favorite-card:hover .favorite-hover-text {
+  background-color: #FF69B4;
+}
+
 
 .explore-card h2,
 .favorite-card h2 {
   font-size: 20px;
-  padding-bottom: 2px;
-}
 
-.explore-card h5,
-.favorite-card h5 {
-  font-size: 12px;
-  padding-bottom: 0.5px;
 }
 
 
+/* Explore Details */
+.explore-detail-container {
+  /* border-style: solid; */
+  vertical-align: middle
+}
 
+.explore-detail {
+  width: 1050px;
+  height: 550px;
+  text-align: center;
+  margin: 0 auto;
+  /* border-style: solid; */
+}
+
+.explore-detail img{
+  float: left;
+}
+
+.explore-detail-text p {
+  font-size: 15px;
+}
+
+.explore-detail-information {
+  width: 1050px;
+  text-align: center;
+  /* margin-left: 33%; */
+  margin: 0 auto;
+  /* border-style: solid; */
+}
+
+button.detail-btn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+div.explore-detail-map {
+  
+  border-style: solid;
+  margin: 0 auto;
+}
 
 
 /* small screen */

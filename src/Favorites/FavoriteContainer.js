@@ -1,6 +1,5 @@
 import React from 'react'
 import ExploreDetails from '../Explore/ExploreDetails'
-import FilterSort from '../FilterSort/FilterSort';
 import FavoriteDisplay from './FavoriteDisplay';
 
 class FavoriteContainer extends React.Component {

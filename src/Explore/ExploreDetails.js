@@ -8,21 +8,26 @@ class ExploreDetails extends React.Component {
     // }
     
     render() {
-        const {selected, favorites, backToMain} = this.props
+        const {selected, backToMain} = this.props
         const {name, image, description, website, address, phone_number, latitude, longitude} = selected
-        console.log(favorites)
-        console.log(selected)
+        // console.log(favorites)
+        // console.log(selected)
         
         return (
-            <div>
-                <h2>{name}</h2>
-                <img src={image} 
-                style={{width: 500, height: "auto"}}
-                alt={name} />
-                <h3>What's so exiting about this place!</h3> <br/>
-                    <p>{description}</p>
+            <div className="explore-detail-container">
 
-                <div>
+                <div className="explore-detail">
+                    <h1>{name}</h1>
+                    <img src={image} 
+                    style={{width: 500, height: "auto"}}
+                    alt={name} />
+                    <div className="explore-detail-text">
+                        <h3>What's so exiting about this place!</h3> <br/>
+                        <p>{description}</p>
+                    </div>
+                </div>
+
+                <div className="explore-detail-information">
                     <h3>More Information:</h3> <br/>
                     Website: 
                     <ExternalLink href={website} target="_blank" rel="noopener noreferrer"> 
@@ -37,18 +42,19 @@ class ExploreDetails extends React.Component {
                     {/* Tags: {selected.tags.map(tag => console.log(tag))} */}
                 </div>
                 <br />
-                    <button 
+                <button 
                     className="detail-btn"
                     onClick={() => {backToMain()}}
                 >
                     Back to Previous Page
                 </button>
-
+                <br />
+                <br />
                 
-                    <MapContainer latitude={latitude} longitude={longitude} name={name}/>
+                <MapContainer latitude={latitude} longitude={longitude} name={name}/>
+               
                 <br /><br />
                 
-
                 </div>
             </div>
         )
