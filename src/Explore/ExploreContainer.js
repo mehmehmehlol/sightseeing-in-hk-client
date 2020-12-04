@@ -1,7 +1,7 @@
 import React from 'react';
 import ExploreDisplay from './ExploreDisplay';
 import ExploreDetails from './ExploreDetails';
-import FilterSort from '../FilterSort/FilterSort';
+
 
 class ExploreContainer extends React.Component {
     state = {
@@ -53,8 +53,7 @@ class ExploreContainer extends React.Component {
         // debugger
         return(
             <div>
-                <h1>Places To Explore</h1>
-                <FilterSort selectFilter={this.selectFilter} selectSort={this.selectSort} />
+
                 {!this.state.chosenPlace ?
                 <ExploreDisplay 
                     places={places} 
@@ -65,6 +64,8 @@ class ExploreContainer extends React.Component {
                     removeFavorite={this.props.removeFavorite} 
                     favorites={this.props.favorites}
                     user={this.props.user}
+                    selectFilter={this.selectFilter}
+                    selectSort={this.selectSort}
                 /> 
                 :
                 <ExploreDetails 

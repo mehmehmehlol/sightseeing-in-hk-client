@@ -9,16 +9,13 @@ const FavoriteCard = ({place, handleClick, removeFavorite}) => {
     // console.log(favorites.some(favorite => favorite.place_id === place.place_id))  
     return(
         <div 
-            className="ui card" 
+            className="favorite-card" 
             key={place.id} 
         >
+            <img src={image} alt={name} />
+            <FavoriteIcon onClick={() => {removeFavorite(place)}} style={{fill: "red"}}/>
             <h2 onClick={() => handleClick(place)} style={{cursor: 'pointer'}}>{name}</h2>
             <h5>Category: {category}</h5>
-            <img src={image} 
-            style={{width: 500, height: "auto"}}
-            alt={name} />
-            <br />
-            <FavoriteIcon onClick={() => {removeFavorite(place)}} />
 
         </div>
     )

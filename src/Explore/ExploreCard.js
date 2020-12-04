@@ -9,24 +9,26 @@ const ExploreCard = ({place, handleClick, addFavorite, removeFavorite, favorites
     // console.log(place)
     // console.log(favorites.some(favorite => favorite.place_id === place.place_id))  
     return(
-        <div 
-            className="ui card" 
+       
+            <div 
+            className="explore-card" 
             key={place.id} 
         >
-            <h2 onClick={() => handleClick(place)} style={{cursor: 'pointer'}}>{name}</h2>
-            <h5>Category: {category}</h5>
-            <img src={image} 
-            style={{width: 500, height: "auto"}}
+            <img className="explore-image" src={image} 
             alt={name} />
-            <br />
             {   
                 !favorites.some(favorite => favorite.id === place.id) ?
-                <FavoriteBorderIcon onClick={() => {addFavorite(place)}}  />
+                <FavoriteBorderIcon onClick={() => {addFavorite(place)}} />    
                 :
-                <FavoriteIcon onClick={() => {removeFavorite(place)}} />
-               
+                <FavoriteIcon onClick={() => {removeFavorite(place)}} style={{fill: "red"}} />
             }
+            <h2 onClick={() => handleClick(place)} style={{cursor: 'pointer'}}>{name}</h2>
+            <h5>Category: {category}</h5>
+            <br />
+            
         </div>
+   
+        
     )
 };
 

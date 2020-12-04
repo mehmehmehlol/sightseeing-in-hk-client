@@ -35,8 +35,7 @@ class FavoriteContainer extends React.Component {
     render() {
         return(
             <div>
-                <h1>Favorites</h1>
-                <FilterSort selectFilter={this.selectFilter} selectSort={this.selectSort} />
+                
                 {!this.state.chosenFavorite ?
                     <FavoriteDisplay
                     favorites={this.props.favorites} 
@@ -44,6 +43,8 @@ class FavoriteContainer extends React.Component {
                     sorted={this.state.sorted} 
                     displayFavInfo={this.displayFavInfo} 
                     removeFavorite={this.props.removeFavorite}
+                    selectFilter={this.selectFilter}
+                    selectSort={this.selectSort}
                     /> 
                    :
                    <ExploreDetails selected={this.state.chosenFavorite} backToMain={this.closeFav} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import FavoriteCard from './FavoriteCard'
+import FilterSort from '../FilterSort/FilterSort';
 
 class FavoriteDisplay extends React.Component {
     filteredPlaces = () => {
@@ -45,16 +46,21 @@ class FavoriteDisplay extends React.Component {
     render() {
         return(
             <div>
-                {this.sortPlaces().map(place => {
-                    return(
-                        <FavoriteCard 
-                            key={place.name} 
-                            place={place} 
-                            handleClick={this.props.displayFavInfo} 
-                            removeFavorite={this.props.removeFavorite}
-                        />
-                    )
-                })}
+                <h1>Favorites</h1>
+                <FilterSort  selectFilter={this.props.selectFilter} selectSort={this.props.selectSort} />
+                <br />
+                <div className="favorite-container">
+                    {this.sortPlaces().map(place => {
+                        return(
+                            <FavoriteCard 
+                                key={place.name} 
+                                place={place} 
+                                handleClick={this.props.displayFavInfo} 
+                                removeFavorite={this.props.removeFavorite}
+                            />
+                        )
+                    })}
+                </div>
             </div>
         )
     }
