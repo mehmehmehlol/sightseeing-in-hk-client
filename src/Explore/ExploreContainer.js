@@ -18,8 +18,10 @@ class ExploreContainer extends React.Component {
         fetch('http://localhost:3001/places')
             .then(res => res.json())
             .then(places => { 
+                // debugger
                 this.setState({places})
             })
+       
     }
 
 

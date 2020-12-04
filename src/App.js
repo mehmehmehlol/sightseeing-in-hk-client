@@ -5,7 +5,7 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { ThemeProvider } from "styled-components"
 import { GlobalStyles } from './Theme/GlobalStyles'
 import { lightTheme, darkTheme } from './Theme/Themes'
-import Toggle from './Theme/Toggle'
+// import Toggle from './Theme/Toggle'
 
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
@@ -15,7 +15,7 @@ import Navbar from './container/Navbar';
 
 import ExploreContainer from './Explore/ExploreContainer.js'
 import FavoriteContainer from './Favorites/FavoriteContainer';
-// import Profile from './User/Profile';
+import Profile from './User/Profile';
 
 
 
@@ -186,14 +186,38 @@ class App extends React.Component {
 
   }
 
+  // Update Profile
+  updateProfile = (profile) => {
+    const token = localStorage.getItem('token')
+      fetch(`http://localhost:3001/users/${this.state.user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          first_name: profile.first_name,
+          last_name: profile.last_name,
+          username: profile.username,
+          password: profile.password
+        })
+      })
+      .then(res => res.json())
+      .then(profile => {
+        // debugger
+        this.setState({user: profile.data.attributes })
+      })
+    }
 
+    
 
+  
   render() {
 
     const { user, favorites } = this.state
-    console.log(favorites)
+    // console.log(favorites)
     // debugger
-    console.log(user)
+    // console.log(user)
       return (
        
             <div className="App">
@@ -202,7 +226,6 @@ class App extends React.Component {
                     <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme} >
                       <>
                       <GlobalStyles />
-                      {/* <button onClick={this.toggleTheme}>Toggle Theme</button> */}
                       {/* <Toggle theme={this.state.theme} toggleTheme={this.toggleTheme} /> */}
                     <Switch>
                         <Route exact path = '/' render={() => <Home user={user} />} />
@@ -230,11 +253,14 @@ class App extends React.Component {
                             />
                           )}
                         />
-      {/* 
                         <Route
                           exact path="/profile"
-                          render={() => <Profile />} 
-                        /> */}
+                          render={() => 
+                          <Profile 
+                            user={user}
+                            updateProfile={this.updateProfile}
+                          />} 
+                        />
                   </Switch>
                   </>
                 </ThemeProvider>

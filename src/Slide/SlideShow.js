@@ -1,5 +1,5 @@
 import React from 'react'
-import { Slide, Zoom } from 'react-slideshow-image'
+import { Slide } from 'react-slideshow-image'
 import './SlideShow.css'
 import hkImage1 from '../SlideImages/hk1.jpg'
 import hkImage2 from '../SlideImages/hk2.jpg'
