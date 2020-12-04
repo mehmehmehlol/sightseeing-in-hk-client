@@ -16,6 +16,7 @@ import Navbar from './container/Navbar';
 import ExploreContainer from './Explore/ExploreContainer.js'
 import FavoriteContainer from './Favorites/FavoriteContainer';
 import Profile from './User/Profile';
+import notFound from './container/notFound'
 
 
 
@@ -261,6 +262,7 @@ class App extends React.Component {
                             updateProfile={this.updateProfile}
                           />} 
                         />
+                        <Route component={notFound} />
                   </Switch>
                   </>
                 </ThemeProvider>
