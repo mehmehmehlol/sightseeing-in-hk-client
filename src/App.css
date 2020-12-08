@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,700;1,800&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Open Sans';
+  
+  
 }
 
 .body {
   margin-top: 70px;
   text-align: center;
+
 }
 
 /* Navbar */
 .navbar {
   position: fixed;
-  /* background: #dddddd; */
+  background: white;
   display: block;
   z-index: 9999;
   width: 100%;
@@ -52,11 +59,14 @@
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
+ 
 }
 
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  /* background-color: red; */
+  border-bottom-color: red;
+
 }
 
 /* Dropdown content (hidden by default) */
@@ -64,6 +74,7 @@
   display: none;
   position: absolute;
   background-color: #f9f9f9;
+  
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
@@ -81,7 +92,7 @@
 
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: black;
 }
 
 /* Show the dropdown menu on hover */
@@ -90,6 +101,11 @@
 }
 
 /* Home */
+.greeting {
+  font-size: 50px;
+  font-family: 'Nerko One';
+}
+
 .home-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 0.5fr);
@@ -112,11 +128,12 @@
   text-decoration: none;
   color: white;
   font-weight: bold;
-  border: 2px white;
+  /* border: 2px white;
   border-style: solid;
-  border-radius: 15px;
+  border-radius: 15px; */
   width: 100px;
   height: 25px;
+  font-size: 25px;
 }
 
 .home-grid img {
@@ -150,10 +167,64 @@
 
 .home-grid p {
   opacity: 1;
-  background-color: #4CAF50;
+  background-color: #FFC72C;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
+}
+
+/* About */
+.about-container {
+  width: 1050px;
+  height: 550px;
+  text-align: center;
+  margin: 0 auto;
+  
+
+}
+
+.image-column {
+  display: inline-block;
+  padding: 5px;
+}
+
+.image-row::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.about-detail {
+  text-align: left;
+  padding-bottom: 100px;
+  font-weight: 300;
+}
+
+.about-detail h4{
+  font-size: 25px;
+
+}
+
+.about-subtitle {
+  text-align: left;
+}
+
+.about-image-right {
+  float: right;
+  height: 275px;
+  width: 400px;
+  margin: 10px;
+}
+
+.about-image-left {
+  float: left;
+  height: 250px;
+  width: 400px;
+  margin: 10px;
+}
+
+.about-map {
+  display: inline;
 }
 
 /* Explore + Favorite */
@@ -197,6 +268,7 @@
   opacity: 1;
   transition: .5s ease;
   backface-visibility: hidden;
+
 }
 
 .heart-icon {
@@ -234,13 +306,13 @@
   opacity: 1;
   font-size: 12px;
   /* opacity: 1; */
-  background-color: #4CAF50;
+  background-color: #6CB4EE;
   color: white;
   padding: 16px 32px;
 }
 
 .favorite-card:hover .favorite-hover-text {
-  background-color: #FF69B4;
+  background-color: #DB7093;
 }
 
 
@@ -249,7 +321,6 @@
   font-size: 20px;
 
 }
-
 
 /* Explore Details */
 .explore-detail-container {
@@ -267,6 +338,7 @@
 
 .explore-detail img{
   float: left;
+  margin: 10px;
 }
 
 .explore-detail-text p {

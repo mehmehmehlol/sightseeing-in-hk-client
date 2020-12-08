@@ -16,15 +16,17 @@ const Home = ({user}) => {
         ? 
         <div>
 
-          <h2>Welcome, Traveler {user.first_name}!</h2>
+          <h2 className="greeting">Welcome, Traveler {user.first_name}!</h2>
 
           <div className="home-wrapper">
             <div className="home-grid">
-              <img src={hk1} alt="about" />
-              <div className="text-over-image">About</div>
-              <div className="hover-text">
-                <p>Want to learn more about Hong Kong before moving on? Here's your chance!</p>
-              </div>
+              <a className='navlink' href='/about'>
+                <img src={hk1} alt="about" />
+                <div className="text-over-image">About</div>
+                <div className="hover-text">
+                  <p>Want to learn more about Hong Kong before moving on?</p>
+                </div>
+              </a>
             </div>
 
             <div className="home-grid">

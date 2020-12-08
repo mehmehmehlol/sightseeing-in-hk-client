@@ -12,6 +12,7 @@ const Navbar = ({user, theme, toggleTheme}) => {
             </a>
 
             <div className="topnav-right">
+                <a className='navlink' href='/about'>About</a>
                 <a className='navlink' href='/explore'>Explore</a>
                 
                 {

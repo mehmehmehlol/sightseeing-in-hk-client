@@ -13,3 +13,5 @@ const GridList = ({handleList, handleGrid}) => {
     </div>
     )
 }
+
+export default GridList;

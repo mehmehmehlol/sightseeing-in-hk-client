@@ -12,6 +12,7 @@ import Signup from './Auth/Signup'
 
 import Home from './container/Home'
 import Navbar from './container/Navbar';
+import About from './container/About'
 
 import ExploreContainer from './Explore/ExploreContainer.js'
 import FavoriteContainer from './Favorites/FavoriteContainer';
@@ -230,6 +231,7 @@ class App extends React.Component {
                       {/* <Toggle theme={this.state.theme} toggleTheme={this.toggleTheme} /> */}
                     <Switch>
                         <Route exact path = '/' render={() => <Home user={user} />} />
+                        <Route exact path = '/about' render={() => <About />} />
                         <Route exact path = '/login' component = {this.renderForm} />
                         <Route exact path = "/signup" component = {this.renderForm} />
                         <Route exact path = '/logout' component={() => this.handleLogout()} />
