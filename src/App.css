@@ -429,6 +429,12 @@ a.to-link {
   text-align: left;
 }
 
+.explore-detail-title {
+  border-style: dotted;
+  border-radius: 15px;
+  border-width: thick;
+}
+
 .explore-detail-information {
   width: 1050px;
   text-align: center;
@@ -447,12 +453,6 @@ button.detail-btn {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
-
-div.explore-detail-map {
-  
-  border-style: solid;
-  margin: 0 auto;
 }
 
 
