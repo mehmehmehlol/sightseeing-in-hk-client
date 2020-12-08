@@ -16,7 +16,7 @@ const Navbar = ({user, theme, toggleTheme}) => {
                 <a className='navlink' href='/explore'>Explore</a>
                 
                 {
-                    !user ?
+                    user ?
                     <>
                     <div className="dropdown">
                         <button className="dropbtn">Account</button>

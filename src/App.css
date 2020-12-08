@@ -331,18 +331,19 @@
 .explore-detail {
   width: 1050px;
   height: 550px;
-  text-align: center;
+ 
   margin: 0 auto;
-  /* border-style: solid; */
+  font-weight: 300;
 }
 
 .explore-detail img{
   float: left;
-  margin: 10px;
+  margin: 15px;
 }
 
 .explore-detail-text p {
   font-size: 15px;
+  text-align: left;
 }
 
 .explore-detail-information {
@@ -354,8 +355,9 @@
 }
 
 button.detail-btn {
-  background-color: #4CAF50; /* Green */
+  background-color: #6CB4EE; 
   border: none;
+  border-radius: 15px;
   color: white;
   padding: 15px 32px;
   text-align: center;

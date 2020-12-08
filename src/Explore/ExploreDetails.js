@@ -28,8 +28,8 @@ class ExploreDetails extends React.Component {
                 </div>
 
                 <div className="explore-detail-information">
-                    <h3>More Information:</h3> <br/>
-                    Website: 
+                    <h3>More Information:</h3>
+                   Website: 
                     <ExternalLink href={website} target="_blank" rel="noopener noreferrer"> 
                         <span>{name}</span>
                     </ExternalLink>

@@ -43,6 +43,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         // console.log(data)
+        // debugger
         this.setState({
           user: data.user.data.attributes,
           favorites: data.user.data.attributes.places

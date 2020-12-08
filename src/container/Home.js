@@ -12,7 +12,7 @@ const Home = ({user}) => {
     return(
       <div>
         <SlideShow />
-        {user 
+        {!user 
         ? 
         <div>
 
@@ -68,11 +68,13 @@ const Home = ({user}) => {
           <h2>Hey Traveler, Whatcha Lookin For!</h2>
           <div className="home-wrapper">
             <div className="home-grid">
-              <img src={hk1} alt="about" />
-              <div className="text-over-image">About</div>
-              <div className="hover-text">
-                <p>Want to learn more about Hong Kong before moving on? Here's your chance!</p>
-              </div>
+              <a className='navlink' href='/about'>
+                <img src={hk1} alt="about" />
+                <div className="text-over-image">About</div>
+                <div className="hover-text">
+                  <p>Want to learn more about Hong Kong before moving on? Here's your chance!</p>
+                </div>
+              </a>
             </div>
 
             <div className="home-grid">
@@ -85,7 +87,7 @@ const Home = ({user}) => {
               </a>
             </div>
 
-            <div>
+            <div className="home-grid">
               <a className='navlink' href='/login'>
                 <img src={hk6} alt="login" />
                 <div className="text-over-image">Login</div>
