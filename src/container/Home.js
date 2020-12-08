@@ -12,7 +12,7 @@ const Home = ({user}) => {
     return(
       <div>
         <SlideShow />
-        {!user 
+        {user 
         ? 
         <div>
 

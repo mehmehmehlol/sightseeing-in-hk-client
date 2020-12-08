@@ -26,7 +26,7 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: {},
+    user: null,
     token: '',
     favorites: [], 
     theme: 'light'
@@ -42,7 +42,7 @@ class App extends React.Component {
       })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
+        console.log(data)
         // debugger
         this.setState({
           user: data.user.data.attributes,
@@ -91,7 +91,7 @@ class App extends React.Component {
      })
      .then(res => res.json())
      .then(data => {
-      //  console.log(data)
+       console.log(data)
       //  debugger
        localStorage.setItem('token', data.token)
        this.setState({
@@ -133,9 +133,9 @@ class App extends React.Component {
         .catch(errors => console.log(errors))
       }
 
-   handleLogout = (user) => {
+   handleLogout = () => {
     localStorage.removeItem('token')
-    this.setState({user: user })
+    this.setState({user: null })
     return <Redirect to="/" push={true} />
   }
 
@@ -235,7 +235,7 @@ class App extends React.Component {
                         <Route exact path = '/about' render={() => <About />} />
                         <Route exact path = '/login' component = {this.renderForm} />
                         <Route exact path = "/signup" component = {this.renderForm} />
-                        <Route exact path = '/logout' component={() => this.handleLogout()} />
+                        <Route exact path = '/logout' component={() => this.state.user ? this.handleLogout() : <Redirect to="/" />} />
 
                         <Route 
                           exact path="/explore" 

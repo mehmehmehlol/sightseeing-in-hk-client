@@ -26,7 +26,8 @@
   left: 0;
 }
 
-.navbar a {
+.navbar a,
+.navLink {
   float: left;
   display: block;
   color: black;
@@ -35,7 +36,7 @@
   text-decoration: none;
 }
 
-.navbar a:hover {
+.navbar .navlink:hover {
   background: black;
   color:white;
   cursor: pointer;
@@ -60,13 +61,6 @@
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0; /* Important for vertical align on mobile phones */
  
-}
-
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  /* background-color: red; */
-  border-bottom-color: red;
-
 }
 
 /* Dropdown content (hidden by default) */
