@@ -32,7 +32,7 @@ const Navbar = ({user, theme, toggleTheme}) => {
                         <div className="dropdown">
                             <button className="dropbtn">Hi, {user.first_name}</button>
                             <div className="dropdown-content">
-                                <a className='navlink' href='/profile'>Profile</a>
+                                <Link className='navlink' to='/profile'>Profile</Link>
                                 <Link className="navlink" to='/logout'>Log Out</Link> 
                             </div>
                         </div>

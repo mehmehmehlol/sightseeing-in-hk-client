@@ -25,49 +25,57 @@ class Profile extends React.Component {
     render() {
         const { user } = this.props
         // const { first_name, last_name, username } = user
-        // console.log(user)
+        console.log(user)
 
         let first_name = this.state.editable ? 
-        <div>
-            First Name: 
+        <div className="profile-edit"> 
             <input type='text' ref={input => this.first_name = input} defaultValue={user.first_name}/>
         </div>
         :
-        <h5>First Name: {user.first_name}</h5>
+        <div>
+            <h5>First Name:</h5>
+            {user.first_name}
+        </div>
 
         let last_name = this.state.editable ? 
-        <div>
-            Last Name: 
+        <div className="profile-edit"> 
             <input type='text' ref={input => this.last_name = input} defaultValue={user.last_name}/>
         </div>
         :
-        <h5>Last Name: {user.last_name}</h5>
+        <div>
+            <h5>Last Name:</h5>
+            {user.last_name}
+        </div>
 
         let username = this.state.editable ? 
-        <div>
-            Username: 
+        <div className="profile-edit">
             <input type='text' ref={input => this.username = input} onChange={this.handleChange} defaultValue={user.username}/>
         </div>
         :
-        <h5>Username: {user.username}</h5>
+        <div>
+            <h5>Username:</h5>
+            {user.username}
+        </div>
 
         let password = this.state.editable ?
-        <div>
-        Password: 
-        <input type='password' ref={input => this.password = input} onChange={this.handleChange} defaultValue={user.password}/>
+        <div className="profile-edit">
+        <input type='password' ref={input => this.password = input} onChange={this.handleChange} defaultValue={user.password} placeholder="Password"/>
         </div>
         :
-        <h5>Password: Click the "Update Profile" to change password</h5>
+        <div> 
+            <h5>Password:</h5>
+            Click the "Update Profile" to change password
+        </div>
 
 
         return (
-            <div>
-                <h2>Hi, {user.first_name}! Here's your profile!</h2>
-                <div>
-                    {username}
-                    {first_name}
-                    {last_name}
-                    {password}
+            <div className="profile-page">
+                <h2 className="profile-bar">Hi, {user.first_name}! Here's your profile!</h2>
+                <div className="profile-info">
+                    {username}<br/>
+                    {first_name}<br/>
+                    {last_name}<br/>
+                    {password}<br/>
                 </div>
                 <span>
                     <div>

@@ -18,7 +18,7 @@ const About = () => {
             </div>
             <div className="about-detail">
             <div>
-                <h4 className="about-subtitle">About Hong Kong</h4>
+                <h4 className="about-subtitle">Overview</h4>
                 <figure>
                     <img className="about-image-right" src="https://www.fodors.com/assets/destinations/54468/boat-harbor-hong-kong-china-1_980x650.jpg" alt="victoria-harbour"/>
                 </figure>

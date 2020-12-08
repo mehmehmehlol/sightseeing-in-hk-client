@@ -220,7 +220,7 @@ class App extends React.Component {
     const { user, favorites } = this.state
     // console.log(favorites)
     // debugger
-    // console.log(user)
+    console.log(user)
       return (
        
             <div className="App">
@@ -230,6 +230,7 @@ class App extends React.Component {
                       <>
                       <GlobalStyles />
                       {/* <Toggle theme={this.state.theme} toggleTheme={this.toggleTheme} /> */}
+                      
                     <Switch>
                         <Route exact path = '/' render={() => <Home user={user} />} />
                         <Route exact path = '/about' render={() => <About />} />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SlideShow from '../Slide/SlideShow'
 import hk1 from '../Images/hong-kong-1.jpg'
 import hk2 from '../Images/hong-kong-3.jpg'
@@ -51,21 +52,21 @@ const Home = ({user}) => {
             </div>
 
             <div className="home-grid">       
-              <a className='navlink' href='/profile'>
+              <Link className='navlink' to='/profile'>
                 <img src={hk2} alt="profile" />
                 <div className="text-over-image">Profile</div>
                 <div className="hover-text">
                   <p>Are you sure this is you? Just kidding! Make sure the info's correct!</p>
                 </div>
 
-              </a>
+              </Link>
             </div>
 
             </div> 
           </div>
         : 
         <div>
-          <h2>Hey Traveler, Whatcha Lookin For!</h2>
+          <h2 className="greeting">Hey Traveler, Whatcha Lookin For!</h2>
           <div className="home-wrapper">
             <div className="home-grid">
               <a className='navlink' href='/about'>
