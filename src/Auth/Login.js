@@ -1,6 +1,6 @@
 import React from 'react'
 // import axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
     
@@ -45,39 +45,41 @@ class Login extends React.Component {
     render() {
         const {username, password} = this.state
         return (
-            <div>
-                <h1>Log In</h1>
+            // <div className="auth-container">
+                <div className="login-form">
+                    <h1>Log In</h1>
 
-                <form onSubmit={this.handleSubmit}>
-                        <label>Username </label>
-                        <input 
-                            name="username" 
-                            value={username} 
-                            type="text" placeholder="Enter your username" 
-                            onChange={this.handleChange} 
-                        />
-                        <br />
-                        <label>Password </label>
-                        <input 
-                            name="password" 
-                            value={password} 
-                            type="password" 
-                            placeholder="Enter your password" 
-                            onChange={this.handleChange} 
-                        />
-                        <br/>
-                    <button className="ui button" type="submit">Log In</button>
+                    <form onSubmit={this.handleSubmit}>
+                            {/* <label>Username </label> */}
+                            <input 
+                                name="username" 
+                                value={username} 
+                                type="text" placeholder="Username" 
+                                onChange={this.handleChange} 
+                            />
+                            <br />
+                            {/* <label>Password </label> */}
+                            <input 
+                                name="password" 
+                                value={password} 
+                                type="password" 
+                                placeholder="Password" 
+                                onChange={this.handleChange} 
+                            />
+                            <br/>
+                        <button className="submit-btn" type="submit">Log In</button>
+
+                        <div>
+                            or <a className="to-link" href='/signup'>Sign Up</a>
+                        </div>
+                    </form>
 
                     <div>
-                        or <Link to='/signup'>Sign Up</Link>
+                        {this.state.errors ? this.handleErrors() : null}
                     </div>
-                </form>
-
-                <div>
-                    {this.state.errors ? this.handleErrors() : null}
+                    
                 </div>
-                
-            </div>
+            // </div>
         )
     }
 };

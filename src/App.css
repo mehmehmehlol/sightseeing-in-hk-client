@@ -100,6 +100,95 @@
   display: block;
 }
 
+/* Login + SignUp */
+
+.login-form,
+.signup-form {
+  background-color: #FFFFFF;
+  width: 400px;
+  height: 350px;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.signup-form {
+  height: 500px;
+}
+
+.login-form form,
+.signup-form form {
+  display: block;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.signup-form h1,
+.login-form h1{
+  padding-top: 40px;
+  color: #696969;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.signup-form input,
+.login-form input {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  /* margin-left: 46px; */
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.18) 
+  !important;
+}
+
+.submit-btn {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);;
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  /* margin-left: 35%; */
+  margin-bottom: 10px;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}
+
+.submit-btn:hover {
+  background: lighten(blue, 5%);
+}
+
+a.to-link {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: grey;
+  text-decoration: none;
+}
+
+
+
+
 /* Home */
 .greeting {
   font-size: 50px;
