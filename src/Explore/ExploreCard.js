@@ -20,7 +20,7 @@ const ExploreCard = ({place, handleClick, addFavorite, removeFavorite, favorites
            
                 {   
                     !favorites.some(favorite => favorite.id === place.id) ?
-                    <FavoriteBorderIcon className="heart-icon"/>  
+                    <FavoriteBorderIcon onClick={() => {addFavorite(place)}} className="heart-icon"/>  
                     :
                     <FavoriteIcon onClick={() => {removeFavorite(place)}} style={{fill: "red"}} className="heart-icon"/>
       
