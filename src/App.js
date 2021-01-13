@@ -21,12 +21,12 @@ import notFound from './container/notFound'
 
 
 
-const profileURL = 'https://sightseeing-in-hk-backend.herokuapp.com/profile'
+const profileURL = 'http://localhost:3001/profile'
 
 class App extends React.Component {
 
   state = {
-    user: null,
+    user: '',
     token: '',
     favorites: [], 
     theme: 'light'
@@ -69,11 +69,11 @@ class App extends React.Component {
   
  
    handleLogin = (info) => {
-     this.handleSigninFetch(info, 'https://sightseeing-in-hk-backend.herokuapp.com/login')
+     this.handleSigninFetch(info, 'http://localhost:3001/login')
    }
 
    handleSignup = (info) => {
-     this.handleSignupFetch(info, 'https://sightseeing-in-hk-backend.herokuapp.com/users' )
+     this.handleSignupFetch(info, 'http://localhost:3001/users' )
    }
 
 
