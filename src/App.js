@@ -26,7 +26,7 @@ const profileURL = 'http://localhost:3001/profile'
 class App extends React.Component {
 
   state = {
-    user: '',
+    user: null,
     token: '',
     favorites: [], 
     theme: 'light'
@@ -43,7 +43,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        debugger
+        // debugger
         this.setState({
           user: data.user.data.attributes,
           favorites: data.user.data.attributes.places
@@ -143,7 +143,7 @@ class App extends React.Component {
 
   addFavorite = (place) => {
     const token = localStorage.getItem('token')
-    fetch(`https://sightseeing-in-hk-backend.herokuapp.com/favorites`, {
+    fetch(`http://localhost:3001/favorites`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ class App extends React.Component {
     const fav = this.state.favorites.find(favorite => favorite.id === place.id)
     // console.log(fav)
     // debugger
-    fetch(`https://sightseeing-in-hk-backend.herokuapp.com/favorites/${fav.fav_id}`, {
+    fetch(`http://localhost:3001/favorites/${fav.fav_id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -192,7 +192,7 @@ class App extends React.Component {
   // Update Profile
   updateProfile = (profile) => {
     const token = localStorage.getItem('token')
-      fetch(`https://sightseeing-in-hk-backend.herokuapp.com/users/${this.state.user.id}`, {
+      fetch(`http://localhost:3001/users/${this.state.user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
