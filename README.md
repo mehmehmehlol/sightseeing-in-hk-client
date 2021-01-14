@@ -14,6 +14,7 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 ### Home
 
 <img href="Images/home.png" width="700" alt="home"/>
+![Home]
 
 ### Before Log In
 
