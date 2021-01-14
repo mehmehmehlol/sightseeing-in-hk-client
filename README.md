@@ -13,29 +13,29 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 ### Home
 
-<img href="Images/home.png" width="700" alt="home"/>
+![Home](Images/home.png)
 
 ### Before Log In
 
- <img href="Images/pre-login.png" width="700" alt="home before log in"/>
+![Pre-Login](Images/pre-login.png)
 
 ### After Log In
 
-<img href="Images/after-login.png" width="700" alt="home after log in"/>
+![After-login](Images/after-login.png)
 
 ### About
 
-<img href="Images/about.png" width="700" alt="about"/>
+![About](Images/about.png)
 
 ### Explore 
 
-<img href="Images/explore.gif" width="700" alt="explore"/>
+![Explore](Images/explore.gif)
 
 ### Favorite
 
-<img href="Images/favorite.gif" width="700" alt="favorite"/>
+![Favorite](Images/favorite.gif)
 
 ### Light and Dark Theme 
 
-<img href="Images/theme.gif" width="700" alt="themes"/>
+![Theme](Images/theme.gif)
 
