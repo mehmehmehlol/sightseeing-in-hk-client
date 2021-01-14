@@ -21,7 +21,7 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 - Clone this repository
 - Redirect to and clone backend repo 
-- Run `rails s` to run the backend server in the terminal of backend folder (See Notes)
+- Run `rails s` to run the backend server in the terminal of backend folder (See Issues Currently Working On)
 - Run `npm i` to install all dependencies
 - Run `npm start` to start "localhost:3000"
 
