@@ -15,25 +15,37 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 ![Home](Images/home.png)
 
+---
+
 ### Before Log In
 
 ![Pre-Login](Images/pre-login.png)
+
+---
 
 ### After Log In
 
 ![After-login](Images/after-login.png)
 
+---
+
 ### About
 
 ![About](Images/about.png)
+
+---
 
 ### Explore 
 
 ![Explore](Images/explore.gif)
 
+---
+
 ### Favorite
 
 ![Favorite](Images/favorite.gif)
+
+---
 
 ### Light and Dark Theme 
 
