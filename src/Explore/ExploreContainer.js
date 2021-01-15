@@ -15,7 +15,7 @@ class ExploreContainer extends React.Component {
     // fetch places
     componentDidMount() {
         
-        fetch('http://localhost:3001/places')
+        fetch('https://sightseeing-in-hk-backend.herokuapp.com/places')
             .then(res => res.json())
             .then(places => { 
                 // debugger

@@ -21,7 +21,7 @@ import notFound from './container/notFound'
 
 
 
-const profileURL = 'http://localhost:3001/profile'
+const profileURL = 'https://sightseeing-in-hk-backend.herokuapp.com/profile'
 
 class App extends React.Component {
 
@@ -69,11 +69,11 @@ class App extends React.Component {
   
  
    handleLogin = (info) => {
-     this.handleSigninFetch(info, 'http://localhost:3001/login')
+     this.handleSigninFetch(info, 'https://sightseeing-in-hk-backend.herokuapp.com/login')
    }
 
    handleSignup = (info) => {
-     this.handleSignupFetch(info, 'http://localhost:3001/users' )
+     this.handleSignupFetch(info, 'https://sightseeing-in-hk-backend.herokuapp.com/users' )
    }
 
 
@@ -143,7 +143,7 @@ class App extends React.Component {
 
   addFavorite = (place) => {
     const token = localStorage.getItem('token')
-    fetch(`http://localhost:3001/favorites`, {
+    fetch(`https://sightseeing-in-hk-backend.herokuapp.com/favorites`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ class App extends React.Component {
     const fav = this.state.favorites.find(favorite => favorite.id === place.id)
     // console.log(fav)
     // debugger
-    fetch(`http://localhost:3001/favorites/${fav.fav_id}`, {
+    fetch(`https://sightseeing-in-hk-backend.herokuapp.com/favorites/${fav.fav_id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -192,7 +192,7 @@ class App extends React.Component {
   // Update Profile
   updateProfile = (profile) => {
     const token = localStorage.getItem('token')
-      fetch(`http://localhost:3001/users/${this.state.user.id}`, {
+      fetch(`https://sightseeing-in-hk-backend.herokuapp.com/users/${this.state.user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
