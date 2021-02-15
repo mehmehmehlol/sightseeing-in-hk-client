@@ -72,7 +72,6 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 - Unable to persist the change of theme colors when accessing a new page (Hook is required)
 - Hit bugs when updating profile
-- Encounter issues when deploying to Heroku
 
 ## Created By
 
