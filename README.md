@@ -7,7 +7,7 @@ This project is designed for users to enjoy a one-stop service to visit all the 
 
 ## Motivations
 
-I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2018. As much as I like planning and recommending places for my friends, I wanted to make the documents into something more abstract and creative. Now that I have possessed web development skills, I decided to transform that Google Doc into a website. A user-friendly and simplistic looking website. 
+I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2018. As much as I like planning and recommending places for my friends, I wanted to make the documents into something more abstract and creative. Now that I have possessed web development skills, I decided to transform that Google Doc into a website. A user-friendly and simplistic-looking website. 
 
 ## Techology Used
 
