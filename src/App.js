@@ -19,8 +19,6 @@ import FavoriteContainer from './Favorites/FavoriteContainer';
 import Profile from './User/Profile';
 import notFound from './container/notFound'
 
-
-
 const profileURL = 'https://sightseeing-in-hk-backend.herokuapp.com/profile'
 
 class App extends React.Component {
