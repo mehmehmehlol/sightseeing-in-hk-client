@@ -72,6 +72,9 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 - Unable to persist the change of theme colors when accessing a new page (Hook is required)
 - Hit bugs when updating profile
+Update on Mar 22, 2021:
+- work on lazy loading images!
+- solve the unable favorite problem!!!
 
 ## Created By
 
