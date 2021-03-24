@@ -25,6 +25,13 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 - Run `npm i` to install all dependencies
 - Run `npm start` to start "localhost:3000"
 
+## Log In
+
+- If curious about the log in function, feel free to log in with the following:
+- Username: user1
+- Password: uk
+
+Most importantly, have fun!
 
 ## Screenshots
 
@@ -72,9 +79,13 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
 
 - Unable to persist the change of theme colors when accessing a new page (Hook is required)
 - Hit bugs when updating profile
+
 Update on Mar 22, 2021:
 - work on lazy loading images!
 - solve the unable favorite problem!!!
+- Possible features to add on: add search bar to look for places
+- Try to design API??
+- Reduce the size of images (takes too long to load)
 
 ## Created By
 
