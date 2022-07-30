@@ -15,7 +15,7 @@ I wrote a >40page Google Doc for a friend who was visiting Hong Kong in summer 2
     - Library used: react-slideshow-image (for slideshows on Home page)
     - Google Maps API
     - styled-components (light and dark theme)
-- Backend: Ruby on Rails ([Backend Repository](https://github.com/mehmehmehlol/sightseeing-in-hk-backend/tree/433df084aa89531e0283dfb5bc2cbf65d4aa73f3))
+- Backend: Ruby on Rails ([Backend Repository](https://github.com/mehmehmehlol/sightseeing-in-hk-backend/tree/main))
 
 ## Installation
 
